@@ -6,8 +6,8 @@ import (
 	"google.golang.org/grpc"
 	"log"
 	"net"
-	"pc28/hdo"
-	pb "pc28/proto"
+	"tty28/hdo"
+	pb "tty28/proto"
 )
 
 type BettingService struct {

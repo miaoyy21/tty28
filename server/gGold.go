@@ -6,10 +6,10 @@ import (
 	"google.golang.org/grpc"
 	"log"
 	"net"
-	"pc28/hdo"
-	pb "pc28/proto"
 	"strconv"
 	"strings"
+	"tty28/hdo"
+	pb "tty28/proto"
 )
 
 type GoldService struct {

@@ -2,8 +2,8 @@ package client
 
 import (
 	"fmt"
-	"pc28/hdo"
 	"strconv"
+	"tty28/hdo"
 )
 
 type QRiddleRequest struct {
