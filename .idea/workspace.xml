@@ -5,14 +5,8 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="2a58a44b-93bd-4375-831b-926687b613db" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/.idea/tty28.iml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/README.md" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/client/betting.go" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/client/gGold.go" beforeDir="false" afterPath="$PROJECT_DIR$/client/gGold.go" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/client/qRiddle.go" beforeDir="false" afterPath="$PROJECT_DIR$/client/qRiddle.go" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/server/gBetting.go" beforeDir="false" afterPath="$PROJECT_DIR$/server/gBetting.go" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/server/gGold.go" beforeDir="false" afterPath="$PROJECT_DIR$/server/gGold.go" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -30,12 +24,16 @@
     <option name="stateVersion" value="1" />
   </component>
   <component name="ProjectId" id="2XWg7eLASsExPM3EefbwdBKCwJF" />
+  <component name="ProjectLevelVcsManager">
+    <ConfirmationsSetting value="2" id="Add" />
+  </component>
   <component name="ProjectViewState">
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
   <component name="PropertiesComponent"><![CDATA[{
   "keyToString": {
+    "ASKED_ADD_EXTERNAL_FILES": "true",
     "ASKED_SHARE_PROJECT_CONFIGURATION_FILES": "true",
     "RunOnceActivity.OpenProjectViewOnStart": "true",
     "RunOnceActivity.ShowReadmeOnStart": "true",
@@ -51,7 +49,7 @@
     "last_opened_file_path": "/Users/miaojingyi/Documents/dev/go/src/tty28",
     "node.js.detected.package.eslint": "true",
     "node.js.selected.package.eslint": "(autodetect)",
-    "settings.editor.selected.configurable": "go"
+    "settings.editor.selected.configurable": "go.vgo"
   }
 }]]></component>
   <component name="RecentsManager">
@@ -78,8 +76,10 @@
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="3" />
   </component>
+  <component name="VcsManagerConfiguration">
+    <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
+  </component>
   <component name="VgoProject">
-    <integration-enabled>false</integration-enabled>
     <settings-migrated>true</settings-migrated>
   </component>
 </project>
