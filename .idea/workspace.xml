@@ -5,12 +5,10 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="2a58a44b-93bd-4375-831b-926687b613db" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/Makefile" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/server/gBetting.go" beforeDir="false" afterPath="$PROJECT_DIR$/server/gBetting.go" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/server/gGold.go" beforeDir="false" afterPath="$PROJECT_DIR$/server/gGold.go" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/server/server.go" beforeDir="false" afterPath="$PROJECT_DIR$/server/server.go" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/gBetting.go" beforeDir="false" afterPath="$PROJECT_DIR$/client/gBetting.go" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/qIssue.go" beforeDir="false" afterPath="$PROJECT_DIR$/client/qIssue.go" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/run.go" beforeDir="false" afterPath="$PROJECT_DIR$/client/run.go" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />

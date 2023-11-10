@@ -74,7 +74,7 @@ func run(db *sql.DB, portGold, portBetting string) {
 	}
 
 	// 第三步 查询本账户的权重值
-	sleepTo(54.0)
+	sleepTo(55.0)
 	log.Println("<三> 查询本账户的权重值 >>> ")
 
 	rds, err := qRiddle(fmt.Sprintf("%d", issue+1), ns)
@@ -146,7 +146,7 @@ func run(db *sql.DB, portGold, portBetting string) {
 			}
 
 			log.Printf("托管账户 %q 执行投注成功 ... \n", user.UserName)
-			if _, err := db.Exec("UPDATE user SET msg = ? WHERE user_id = ?", "Successful", user.UserId); err != nil {
+			if _, err := db.Exec("UPDATE user SET msg = ? WHERE user_id = ?", "Success", user.UserId); err != nil {
 				log.Printf("【ERR-43】: [%s] %s \n", user.UserName, err)
 				return
 			}

@@ -38,7 +38,7 @@ func qIssueGold(ns int) (int, int64, error) {
 	var issue int
 	var gold, min int64
 	for _, l := range resp.Data.List {
-		if l.Status == 0 {
+		if l.Status == 2 {
 			if min == 0 {
 				min, err = hdo.Int64(l.TotalBet)
 				if err != nil {
