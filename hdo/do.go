@@ -1,7 +1,6 @@
 package hdo
 
 import (
-	"bytes"
 	"encoding/json"
 	"net/http"
 	"strconv"
@@ -9,31 +8,31 @@ import (
 	"time"
 )
 
-func Do(origin, cookie, agent string, url string, s interface{}, t interface{}) error {
-	buf := new(bytes.Buffer)
-
-	// JSON Encode
-	if err := json.NewEncoder(buf).Encode(s); err != nil {
-		return err
-	}
+func Do(origin, referer, secChUa, secChUaPlatform, userAgent string, url string, t interface{}) error {
 
 	// Sync
-	req, err := http.NewRequest("POST", url, buf)
+	req, err := http.NewRequest("GET", url, nil)
 	if err != nil {
 		return err
 	}
 
 	// Sync Header
-	req.Header.Set("Accept-Language", "zh-CN,zh;q=0.9")
-	req.Header.Set("Cache-Control", "no-cache")
-	req.Header.Set("Connection", "keep-alive")
-	req.Header.Set("Pragma", "no-cache")
-	req.Header.Set("User-Agent", agent)
+	req.Header.Set("authority", "interface.tiaotiaoyu.com")
+	req.Header.Set("accept", "application/json, text/plain, */*")
+	req.Header.Set("accept-language", "zh-CN,zh;q=0.9")
+	req.Header.Set("cache-control", "no-cache")
+	req.Header.Set("origin", origin)
+	req.Header.Set("pragma", "no-cache")
+	req.Header.Set("referer", referer)
 
-	req.Header.Set("Origin", origin)
-	req.Header.Set("Accept", "application/json, text/plain, */*")
-	req.Header.Set("Content-Type", "application/json;charset=UTF-8")
-	req.Header.Set("Cookie", buildCookie(cookie))
+	req.Header.Set("sec-ch-ua", secChUa)
+	req.Header.Set("sec-ch-ua-mobile", "?0")
+	req.Header.Set("sec-ch-ua-platform", secChUaPlatform)
+	req.Header.Set("sec-fetch-dest", "empty")
+	req.Header.Set("sec-fetch-mode", "cors")
+	req.Header.Set("sec-fetch-site", "cross-site")
+
+	req.Header.Set("user-agent", userAgent)
 
 	// Response
 	http.DefaultClient.Timeout = 3 * time.Second

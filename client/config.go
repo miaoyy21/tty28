@@ -9,22 +9,17 @@ import (
 type Config struct {
 	Dsn string `json:"dsn"`
 
-	Origin    string `json:"origin"`
-	Cookie    string `json:"cookie"`
-	UserAgent string `json:"user_agent"`
+	Origin          string `json:"origin"`
+	Referer         string `json:"referer"`
+	SecChUa         string `json:"sec-ch-ua"`
+	SecChUaPlatform string `json:"sec-ch-ua-platform"`
+	UserAgent       string `json:"user_agent"`
+	UToken          string `json:"utoken"`
 
 	IssueURL   string `json:"issue_url"`
 	RiddleURL  string `json:"riddle_url"`
 	GoldURL    string `json:"gold_url"`
 	BettingURL string `json:"betting_url"`
-
-	UserId    string `json:"user_id"`
-	Token     string `json:"token"`
-	PType     string `json:"p_type"`
-	Unix      string `json:"unix"`
-	KeyCode   string `json:"key_code"`
-	DeviceId  string `json:"device_id"`
-	ChannelId string `json:"channel_id"`
 }
 
 var conf Config

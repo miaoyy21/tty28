@@ -5,13 +5,28 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="2a58a44b-93bd-4375-831b-926687b613db" name="Changes" comment="">
+      <change afterPath="$PROJECT_DIR$/client/a.go" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/README.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/client.go" beforeDir="false" afterPath="$PROJECT_DIR$/client/client.go" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/config.go" beforeDir="false" afterPath="$PROJECT_DIR$/client/config.go" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/qIssue.go" beforeDir="false" afterPath="$PROJECT_DIR$/client/qIssue.go" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/run.go" beforeDir="false" afterPath="$PROJECT_DIR$/client/run.go" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/hdo/do.go" beforeDir="false" afterPath="$PROJECT_DIR$/hdo/do.go" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/proto/pc28.pb.go" beforeDir="false" afterPath="$PROJECT_DIR$/proto/tty28.pb.go" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/proto/pc28.proto" beforeDir="false" afterPath="$PROJECT_DIR$/proto/tty28.proto" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/proto/pc28_grpc.pb.go" beforeDir="false" afterPath="$PROJECT_DIR$/proto/tty28_grpc.pb.go" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
     <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="Go File" />
+      </list>
+    </option>
   </component>
   <component name="GOROOT" url="file:///opt/homebrew/Cellar/go/1.19.2/libexec" />
   <component name="Git.Settings">
@@ -35,6 +50,7 @@
   "keyToString": {
     "ASKED_ADD_EXTERNAL_FILES": "true",
     "ASKED_SHARE_PROJECT_CONFIGURATION_FILES": "true",
+    "DefaultGoTemplateProperty": "Go File",
     "RunOnceActivity.OpenProjectViewOnStart": "true",
     "RunOnceActivity.ShowReadmeOnStart": "true",
     "RunOnceActivity.go.formatter.settings.were.checked": "true",

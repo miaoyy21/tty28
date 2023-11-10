@@ -34,7 +34,7 @@ func run(db *sql.DB, portGold, portBetting string) {
 	if total < 1<<27 {
 		mrx = float64(total) / float64(1<<27) // 134,217,728
 	}
-	log.Printf("最新开奖期数【%d】，总值系数【%.2f】 ... \n", issue, mrx)
+	log.Printf("最新开奖期数【%d】，资金池总量【%d，系数%.2f】 ... \n", issue, total, mrx)
 
 	// 第二步 查询托管账户的金额
 	sleepTo(40.0 + 5*rand.Float64())

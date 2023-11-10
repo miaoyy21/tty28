@@ -2,7 +2,7 @@
 // versions:
 // - protoc-gen-go-grpc v1.2.0
 // - protoc             v3.21.9
-// source: pc28.proto
+// source: tty28.proto
 
 package pb
 
@@ -101,7 +101,7 @@ var SearchService_ServiceDesc = grpc.ServiceDesc{
 		},
 	},
 	Streams:  []grpc.StreamDesc{},
-	Metadata: "pc28.proto",
+	Metadata: "tty28.proto",
 }
 
 // GoldServiceClient is the client API for GoldService service.
@@ -187,7 +187,7 @@ var GoldService_ServiceDesc = grpc.ServiceDesc{
 		},
 	},
 	Streams:  []grpc.StreamDesc{},
-	Metadata: "pc28.proto",
+	Metadata: "tty28.proto",
 }
 
 // BettingServiceClient is the client API for BettingService service.
@@ -273,5 +273,5 @@ var BettingService_ServiceDesc = grpc.ServiceDesc{
 		},
 	},
 	Streams:  []grpc.StreamDesc{},
-	Metadata: "pc28.proto",
+	Metadata: "tty28.proto",
 }
