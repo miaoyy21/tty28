@@ -47,9 +47,9 @@ func run(db *sql.DB, portGold, portBetting string) {
 	}
 
 	for _, user := range users {
-		gold, err := gGold(net.JoinHostPort(user.Host, portGold), user.Cookie, user.UserAgent, user.Unix, user.KeyCode, user.DeviceId, user.UserId, user.Token)
+		gold, err := gGold(net.JoinHostPort(user.Host, portGold), user.UToken, user.SecChUa, user.SecChUaPlatform, user.UserAgent)
 		if err != nil {
-			log.Printf("【ERR-22】: [%s] %s \n", user.UserId, err)
+			log.Printf("【ERR-22】: [%s %s] %s \n", user.UserId, user.UserName, err)
 			return
 		}
 
@@ -57,13 +57,13 @@ func run(db *sql.DB, portGold, portBetting string) {
 
 		// Update User's Gold
 		if _, err := db.Exec("UPDATE user SET gold = ?, update_at = ? WHERE user_id = ?", gold, time.Now().Format("2006-01-02 15:04"), user.UserId); err != nil {
-			log.Printf("【ERR-23】: [%s] %s \n", user.UserId, err)
+			log.Printf("【ERR-23】: [%s %s] %s \n", user.UserId, user.UserName, err)
 			return
 		}
 
 		// Insert User's Log
 		if _, err := db.Exec("INSERT INTO user_log(user_id, time_at, gold) VALUES (?,?,?)", user.UserId, time.Now().Format("2006-01-02 15:04"), gold); err != nil {
-			log.Printf("【ERR-24】: [%s] %s \n", user.UserId, err)
+			log.Printf("【ERR-24】: [%s %s] %s \n", user.UserId, user.UserName, err)
 			return
 		}
 

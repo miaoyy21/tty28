@@ -6,8 +6,6 @@ import (
 	"google.golang.org/grpc"
 	"log"
 	"net"
-	"strconv"
-	"strings"
 	"tty28/hdo"
 	pb "tty28/proto"
 )
@@ -16,53 +14,32 @@ type GoldService struct {
 	pb.UnimplementedGoldServiceServer
 }
 
-type QGoldRequest struct {
-	Unix      string `json:"unix"`
-	KeyCode   string `json:"keycode"`
-	PType     string `json:"ptype"`
-	DeviceId  string `json:"deviceid"`
-	ChannelId string `json:"channelid"`
-	UserId    string `json:"userid"`
-	Token     string `json:"token"`
-}
-
 type QGoldResponse struct {
-	Status int `json:"status"`
-	Data   struct {
-		GoldEggs string `json:"goldeggs"`
+	Code int    `json:"code"`
+	Msg  string `json:"msg"`
+	Data struct {
+		Gold string `json:"gold"`
 	} `json:"data"`
-	Msg string `json:"msg"`
 }
 
 func (s *GoldService) Gold(ctx context.Context, r *pb.GoldRequest) (*pb.GoldResponse, error) {
-	req := QGoldRequest{
-		Unix:      r.GetUnix(),
-		KeyCode:   r.GetKeyCode(),
-		PType:     r.GetPType(),
-		DeviceId:  r.GetDeviceId(),
-		ChannelId: r.GetChannelId(),
-		UserId:    r.GetUserId(),
-		Token:     r.GetToken(),
-	}
-
 	var resp QGoldResponse
 
-	err := hdo.Do(r.GetOrigin(), r.GetCookie(), r.GetUserAgent(), r.GetUrl(), req, &resp)
+	err := hdo.Do(r.GetAuthority(), r.GetOrigin(), r.GetReferer(), r.GetSecChUa(), r.GetSecChUaPlatform(), r.GetUserAgent(), r.GetUrl(), &resp)
 	if err != nil {
 		return nil, err
 	}
 
-	if resp.Status != 0 {
-		return nil, fmt.Errorf("接收到状态错误吗 : [%d] %s", resp.Status, resp.Msg)
+	if resp.Code != 0 {
+		return nil, fmt.Errorf("接收到状态错误吗 : [%d] %s", resp.Code, resp.Msg)
 	}
 
-	sGold := strings.ReplaceAll(resp.Data.GoldEggs, ",", "")
-	iGold, err := strconv.Atoi(sGold)
+	gold, err := hdo.Int64(resp.Data.Gold)
 	if err != nil {
 		return nil, err
 	}
 
-	return &pb.GoldResponse{Gold: int64(iGold)}, nil
+	return &pb.GoldResponse{Gold: gold}, nil
 }
 
 func gGold(port string) {

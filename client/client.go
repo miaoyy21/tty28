@@ -5,8 +5,6 @@ import (
 	"fmt"
 	"log"
 	"math"
-	"strconv"
-	"strings"
 	"time"
 )
 
@@ -83,17 +81,6 @@ func ofGold(fGold float64) int32 {
 	}
 
 	return iGold
-}
-
-func toInt64(s string) (int64, error) {
-	s0 := strings.ReplaceAll(s, ",", "")
-
-	i64, err := strconv.ParseInt(s0, 10, 64)
-	if err != nil {
-		return 0, err
-	}
-
-	return i64, nil
 }
 
 func sleepTo(s0 float64) {

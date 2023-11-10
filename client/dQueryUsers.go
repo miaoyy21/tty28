@@ -5,24 +5,22 @@ import (
 )
 
 type User struct {
+	UserId   string
 	UserName string
 	Host     string
 	Sigma    float64
 
-	Cookie    string
-	UserAgent string
-	Unix      string
-	KeyCode   string
-	DeviceId  string
-	UserId    string
-	Token     string
+	UToken          string
+	SecChUa         string
+	SecChUaPlatform string
+	UserAgent       string
 
 	Gold int64
 }
 
 func dQueryUsers(db *sql.DB) ([]*User, error) {
 	query := `
-		SELECT user_name, host, sigma, cookie, user_agent, unix, key_code, device_id, user_id, token, gold
+		SELECT user_id,user_name, host, sigma, u_token, sec_ch_ua, sec_ch_ua_platform, user_agent,gold
 		FROM user
 		WHERE is_valid = 1
 		ORDER BY gold DESC
@@ -36,25 +34,23 @@ func dQueryUsers(db *sql.DB) ([]*User, error) {
 
 	users := make([]*User, 0)
 	for rows.Next() {
-		var userName, host, cookie, userAgent, unix, keyCode, deviceId, userId, token string
+		var userId, userName, host, uToken, secChUa, secChUaPlatform, userAgent string
 		var sigma float64
 		var gold int64
-		if err := rows.Scan(&userName, &host, &sigma, &cookie, &userAgent, &unix, &keyCode, &deviceId, &userId, &token, &gold); err != nil {
+		if err := rows.Scan(&userId, &userName, &host, &sigma, &uToken, &secChUa, &secChUaPlatform, &userAgent, &gold); err != nil {
 			return nil, err
 		}
 
 		user := &User{
+			UserId:   userId,
 			UserName: userName,
 			Host:     host,
 			Sigma:    sigma,
 
-			Cookie:    cookie,
-			UserAgent: userAgent,
-			Unix:      unix,
-			KeyCode:   keyCode,
-			DeviceId:  deviceId,
-			UserId:    userId,
-			Token:     token,
+			UToken:          uToken,
+			SecChUa:         secChUa,
+			SecChUaPlatform: secChUaPlatform,
+			UserAgent:       userAgent,
 
 			Gold: gold,
 		}

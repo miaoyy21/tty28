@@ -5,16 +5,20 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="2a58a44b-93bd-4375-831b-926687b613db" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/client/a.go" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/hdo/int64.go" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/a.go" beforeDir="false" afterPath="$PROJECT_DIR$/client/a.go" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/client/client.go" beforeDir="false" afterPath="$PROJECT_DIR$/client/client.go" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/client/config.go" beforeDir="false" afterPath="$PROJECT_DIR$/client/config.go" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/dQueryUsers.go" beforeDir="false" afterPath="$PROJECT_DIR$/client/dQueryUsers.go" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/gGold.go" beforeDir="false" afterPath="$PROJECT_DIR$/client/gGold.go" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/client/qIssue.go" beforeDir="false" afterPath="$PROJECT_DIR$/client/qIssue.go" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/client/run.go" beforeDir="false" afterPath="$PROJECT_DIR$/client/run.go" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/hdo/do.go" beforeDir="false" afterPath="$PROJECT_DIR$/hdo/do.go" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/proto/pc28.pb.go" beforeDir="false" afterPath="$PROJECT_DIR$/proto/tty28.pb.go" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/proto/pc28.proto" beforeDir="false" afterPath="$PROJECT_DIR$/proto/tty28.proto" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/proto/pc28_grpc.pb.go" beforeDir="false" afterPath="$PROJECT_DIR$/proto/tty28_grpc.pb.go" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/proto/tty28.pb.go" beforeDir="false" afterPath="$PROJECT_DIR$/proto/tty28.pb.go" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/proto/tty28.proto" beforeDir="false" afterPath="$PROJECT_DIR$/proto/tty28.proto" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/proto/tty28_grpc.pb.go" beforeDir="false" afterPath="$PROJECT_DIR$/proto/tty28_grpc.pb.go" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/server/gGold.go" beforeDir="false" afterPath="$PROJECT_DIR$/server/gGold.go" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -56,7 +60,6 @@
     "RunOnceActivity.go.formatter.settings.were.checked": "true",
     "RunOnceActivity.go.migrated.go.modules.settings": "true",
     "RunOnceActivity.go.modules.go.list.on.any.changes.was.set": "true",
-    "SHARE_PROJECT_CONFIGURATION_FILES": "true",
     "WebServerToolWindowFactoryState": "false",
     "configurable..is.expanded": "true",
     "configurable.GoLibrariesConfigurable.is.expanded": "true",
@@ -66,6 +69,11 @@
     "node.js.detected.package.eslint": "true",
     "node.js.selected.package.eslint": "(autodetect)",
     "settings.editor.selected.configurable": "go.vgo"
+  },
+  "keyToStringList": {
+    "DatabaseDriversLRU": [
+      "mysql"
+    ]
   }
 }]]></component>
   <component name="RecentsManager">

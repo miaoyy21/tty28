@@ -23,7 +23,7 @@ func qIssueGold() (int, int64, error) {
 	var resp QIssueResponse
 
 	qUrl := fmt.Sprintf("%s?utoken=%s&stylePath=happy&t=%d", conf.IssueURL, conf.UToken, time.Now().UnixNano())
-	err := hdo.Do(conf.Origin, conf.Referer, conf.SecChUa, conf.SecChUaPlatform, conf.UserAgent, qUrl, &resp)
+	err := hdo.Do(conf.Authority, conf.Origin, conf.Referer, conf.SecChUa, conf.SecChUaPlatform, conf.UserAgent, qUrl, &resp)
 	if err != nil {
 		return 0, 0, err
 	}
@@ -41,14 +41,14 @@ func qIssueGold() (int, int64, error) {
 	for _, l := range resp.Data.List {
 		if l.Status == 0 {
 			if min == 0 {
-				min, err = toInt64(l.TotalBet)
+				min, err = hdo.Int64(l.TotalBet)
 				if err != nil {
 					return 0, 0, err
 				}
 			}
 		} else {
 			issue = l.Cid
-			gold, err = toInt64(l.TotalBet)
+			gold, err = hdo.Int64(l.TotalBet)
 			if err != nil {
 				return 0, 0, err
 			}

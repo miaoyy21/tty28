@@ -8,7 +8,7 @@ import (
 	"time"
 )
 
-func Do(origin, referer, secChUa, secChUaPlatform, userAgent string, url string, t interface{}) error {
+func Do(authority, origin, referer, secChUa, secChUaPlatform, userAgent string, url string, t interface{}) error {
 
 	// Sync
 	req, err := http.NewRequest("GET", url, nil)
@@ -17,7 +17,7 @@ func Do(origin, referer, secChUa, secChUaPlatform, userAgent string, url string,
 	}
 
 	// Sync Header
-	req.Header.Set("authority", "interface.tiaotiaoyu.com")
+	req.Header.Set("authority", authority)
 	req.Header.Set("accept", "application/json, text/plain, */*")
 	req.Header.Set("accept-language", "zh-CN,zh;q=0.9")
 	req.Header.Set("cache-control", "no-cache")

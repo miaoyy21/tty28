@@ -9,6 +9,7 @@ import (
 type Config struct {
 	Dsn string `json:"dsn"`
 
+	Authority       string `json:"authority"`
 	Origin          string `json:"origin"`
 	Referer         string `json:"referer"`
 	SecChUa         string `json:"sec-ch-ua"`
