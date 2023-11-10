@@ -30,20 +30,14 @@ service BettingService {
 
 message BettingRequest {
   string url = 11;
-  string origin = 12;
-  string cookie = 13;
-  string userAgent = 14;
 
-  string issue = 21;
-  map<int32, int32> bets = 22;
+  string authority = 21;
+  string origin = 22;
+  string referer = 23;
 
-  string unix = 31;
-  string keyCode = 32;
-  string pType = 33;
-  string deviceId = 34;
-  string channelId = 35;
-  string userId = 36;
-  string token = 37;
+  string secChUa = 31;
+  string secChUaPlatform = 32;
+  string userAgent = 33;
 }
 
 message BettingResponse {

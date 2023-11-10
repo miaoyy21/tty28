@@ -68,16 +68,16 @@ func ofM1Gold(g int64) int64 {
 	}
 }
 
-func ofGold(fGold float64) int32 {
-	var iGold int32
+func ofGold(fGold float64) int {
+	var iGold int
 	if fGold >= 1<<16 {
-		iGold = int32(math.Round(fGold/2000.0) * 2000)
+		iGold = int(math.Round(fGold/2000.0) * 2000)
 	} else if fGold >= 1<<15 {
-		iGold = int32(math.Round(fGold/1500.0) * 1500)
+		iGold = int(math.Round(fGold/1500.0) * 1500)
 	} else if fGold >= 1<<14 {
-		iGold = int32(math.Round(fGold/1000.0) * 1000)
+		iGold = int(math.Round(fGold/1000.0) * 1000)
 	} else {
-		iGold = int32(math.Round(fGold/500.0) * 500)
+		iGold = int(math.Round(fGold/500.0) * 500)
 	}
 
 	return iGold

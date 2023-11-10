@@ -7,6 +7,8 @@ import (
 	"log"
 	"math/rand"
 	"net"
+	"strconv"
+	"strings"
 	"sync"
 	"time"
 )
@@ -111,9 +113,10 @@ func run(db *sql.DB, portGold, portBetting string) {
 			defer wg.Done()
 
 			time.Sleep(time.Duration(rand.Intn(500)) * time.Millisecond)
-			bets := make(map[int32]int32)
+			bets := make([]string, 0, 27)
 			for _, n := range SN28 {
 				if rds[n] <= user.Sigma {
+					bets = append(bets, "0")
 					continue
 				}
 
@@ -125,15 +128,12 @@ func run(db *sql.DB, portGold, portBetting string) {
 				}
 
 				fGold := mrx * sig * float64(m1Gold) * float64(STDS1000[n]) / 1000
-				iGold := ofGold(fGold)
-				if iGold > 0 {
-					bets[n] = iGold
-				}
+				bets = append(bets, strconv.Itoa(ofGold(fGold)))
 			}
 
-			log.Printf("托管账户 %q 执行投注成功 ... \n", user.UserName)
-			if err := gBetting(net.JoinHostPort(user.Host, portBetting), fmt.Sprintf("%d", issue+1), bets,
-				user.Cookie, user.UserAgent, user.Unix, user.KeyCode, user.DeviceId, user.UserId, user.Token); err != nil {
+			if err := gBetting(
+				net.JoinHostPort(user.Host, portBetting), fmt.Sprintf("%d", issue+1), strings.Join(bets, ","),
+				user.UToken, user.SecChUa, user.SecChUaPlatform, user.UserAgent); err != nil {
 				log.Printf("【ERR-41】:【%s】 %s \n", user.UserName, err)
 
 				if _, err := db.Exec("UPDATE user SET msg = ? WHERE user_id = ?", err.Error(), user.UserId); err != nil {
@@ -144,6 +144,7 @@ func run(db *sql.DB, portGold, portBetting string) {
 				return
 			}
 
+			log.Printf("托管账户 %q 执行投注成功 ... \n", user.UserName)
 			if _, err := db.Exec("UPDATE user SET msg = ? WHERE user_id = ?", "OK", user.UserId); err != nil {
 				log.Printf("【ERR-43】: [%s] %s \n", user.UserName, err)
 				return
