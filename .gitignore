@@ -21,4 +21,6 @@
 go.work
 
 config.json
-a.txt
+tty28_windows_386.exe
+tty28_linux_386
+tty28_darwin_arm64

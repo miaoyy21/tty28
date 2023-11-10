@@ -14,52 +14,24 @@ type BettingService struct {
 	pb.UnimplementedBettingServiceServer
 }
 type BettingResponse struct {
-	Status int    `json:"status"`
-	Msg    string `json:"msg"`
-}
-
-type BettingRequest struct {
-	Issue     string `json:"issue"`
-	GoldEggs  int32  `json:"totalgoldeggs"`
-	Numbers   int32  `json:"numbers"`
-	Unix      string `json:"unix"`
-	Keycode   string `json:"keycode"`
-	PType     string `json:"ptype"`
-	DeviceId  string `json:"deviceid"`
-	ChannelId string `json:"channelid"`
-	Userid    string `json:"userid"`
-	Token     string `json:"token"`
+	Code int    `json:"code"`
+	Msg  string `json:"msg"`
+	Data string `json:"data"`
 }
 
 func (s *BettingService) Betting(ctx context.Context, r *pb.BettingRequest) (*pb.BettingResponse, error) {
-	req := BettingRequest{
-		Issue:     r.GetIssue(),
-		Unix:      r.GetUnix(),
-		Keycode:   r.GetKeyCode(),
-		PType:     r.GetPType(),
-		DeviceId:  r.GetDeviceId(),
-		ChannelId: r.GetChannelId(),
-		Userid:    r.GetUserId(),
-		Token:     r.GetToken(),
+	var resp BettingResponse
+
+	err := hdo.Do(r.GetAuthority(), r.GetOrigin(), r.GetReferer(), r.GetSecChUa(), r.GetSecChUaPlatform(), r.GetUserAgent(), r.GetUrl(), &resp)
+	if err != nil {
+		return nil, err
 	}
 
-	log.Printf("投注期数【%s】...\n", req.Issue)
-	for i, g := range r.GetBets() {
-		var resp BettingResponse
-
-		req.Numbers = i
-		req.GoldEggs = g
-
-		err := hdo.Do(r.GetOrigin(), r.GetCookie(), r.GetUserAgent(), r.GetUrl(), req, &resp)
-		if err != nil {
-			return nil, err
-		}
-
-		if resp.Status != 0 {
-			return nil, fmt.Errorf("接收到状态错误吗 : [%d] %s", resp.Status, resp.Msg)
-		}
+	if resp.Code != 0 {
+		return nil, fmt.Errorf("接收到状态错误吗 : [%d] %s", resp.Code, resp.Msg)
 	}
 
+	log.Println("执行投注成功 ...")
 	return &pb.BettingResponse{}, nil
 }
 

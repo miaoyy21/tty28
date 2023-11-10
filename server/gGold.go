@@ -39,6 +39,7 @@ func (s *GoldService) Gold(ctx context.Context, r *pb.GoldRequest) (*pb.GoldResp
 		return nil, err
 	}
 
+	log.Printf("当前账户金额 %d ... \n", gold)
 	return &pb.GoldResponse{Gold: gold}, nil
 }
 
