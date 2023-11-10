@@ -20,13 +20,14 @@ func run(db *sql.DB, portGold, portBetting string) {
 		}
 	}()
 
+	ns := time.Now().Nanosecond()
 	log.Println("//*********************************** 定时任务开始执行 ***********************************//")
 
 	// 第一步 查询本账号的最新期数
 	sleepTo(30.0 + 5*rand.Float64())
 	log.Println("<一> 查询本账号的最新期数 >>> ")
 
-	issue, total, err := qIssueGold()
+	issue, total, err := qIssueGold(ns)
 	if err != nil {
 		log.Printf("【ERR-11】: %s \n", err)
 		return
@@ -49,7 +50,7 @@ func run(db *sql.DB, portGold, portBetting string) {
 	}
 
 	for _, user := range users {
-		gold, err := gGold(net.JoinHostPort(user.Host, portGold), user.UToken, user.SecChUa, user.SecChUaPlatform, user.UserAgent)
+		gold, err := gGold(net.JoinHostPort(user.Host, portGold), user.UToken, user.SecChUa, user.SecChUaPlatform, user.UserAgent, ns)
 		if err != nil {
 			log.Printf("【ERR-22】: [%s %s] %s \n", user.UserId, user.UserName, err)
 			return
@@ -76,7 +77,7 @@ func run(db *sql.DB, portGold, portBetting string) {
 	sleepTo(54.0)
 	log.Println("<三> 查询本账户的权重值 >>> ")
 
-	rds, err := qRiddle(fmt.Sprintf("%d", issue+1))
+	rds, err := qRiddle(fmt.Sprintf("%d", issue+1), ns)
 	if err != nil {
 		log.Printf("【ERR-31】: %s \n", err)
 		return
@@ -133,7 +134,7 @@ func run(db *sql.DB, portGold, portBetting string) {
 
 			if err := gBetting(
 				net.JoinHostPort(user.Host, portBetting), fmt.Sprintf("%d", issue+1), strings.Join(bets, ","),
-				user.UToken, user.SecChUa, user.SecChUaPlatform, user.UserAgent); err != nil {
+				user.UToken, user.SecChUa, user.SecChUaPlatform, user.UserAgent, ns); err != nil {
 				log.Printf("【ERR-41】:【%s】 %s \n", user.UserName, err)
 
 				if _, err := db.Exec("UPDATE user SET msg = ? WHERE user_id = ?", err.Error(), user.UserId); err != nil {
@@ -145,7 +146,7 @@ func run(db *sql.DB, portGold, portBetting string) {
 			}
 
 			log.Printf("托管账户 %q 执行投注成功 ... \n", user.UserName)
-			if _, err := db.Exec("UPDATE user SET msg = ? WHERE user_id = ?", "OK", user.UserId); err != nil {
+			if _, err := db.Exec("UPDATE user SET msg = ? WHERE user_id = ?", "Successful", user.UserId); err != nil {
 				log.Printf("【ERR-43】: [%s] %s \n", user.UserName, err)
 				return
 			}

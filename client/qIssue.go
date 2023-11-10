@@ -3,7 +3,6 @@ package client
 import (
 	"errors"
 	"fmt"
-	"time"
 	"tty28/hdo"
 )
 
@@ -19,10 +18,10 @@ type QIssueResponse struct {
 	} `json:"data"`
 }
 
-func qIssueGold() (int, int64, error) {
+func qIssueGold(ns int) (int, int64, error) {
 	var resp QIssueResponse
 
-	qUrl := fmt.Sprintf("%s?utoken=%s&stylePath=happy&t=%d", conf.IssueURL, conf.UToken, time.Now().UnixNano())
+	qUrl := fmt.Sprintf("%s?utoken=%s&stylePath=happy&t=%d", conf.IssueURL, conf.UToken, ns)
 	err := hdo.Do(conf.Authority, conf.Origin, conf.Referer, conf.SecChUa, conf.SecChUaPlatform, conf.UserAgent, qUrl, &resp)
 	if err != nil {
 		return 0, 0, err

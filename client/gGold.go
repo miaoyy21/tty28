@@ -5,11 +5,10 @@ import (
 	"fmt"
 	"google.golang.org/grpc"
 	"google.golang.org/grpc/credentials/insecure"
-	"time"
 	pb "tty28/proto"
 )
 
-func gGold(target, uToken, secChUa, secChUaPlatform, userAgent string) (int64, error) {
+func gGold(target, uToken, secChUa, secChUaPlatform, userAgent string, ns int) (int64, error) {
 	// Create a client connection to the given target with a credentials which disables transport security
 	conn, err := grpc.Dial(target, grpc.WithTransportCredentials(insecure.NewCredentials()))
 	if err != nil {
@@ -20,7 +19,7 @@ func gGold(target, uToken, secChUa, secChUaPlatform, userAgent string) (int64, e
 	client := pb.NewGoldServiceClient(conn)
 
 	req := &pb.GoldRequest{
-		Url: fmt.Sprintf("%s?utoken=%s&t=%d", conf.GoldURL, uToken, time.Now().UnixNano()),
+		Url: fmt.Sprintf("%s?utoken=%s&t=%d", conf.GoldURL, uToken, ns),
 
 		Authority: conf.Authority,
 		Origin:    conf.Origin,

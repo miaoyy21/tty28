@@ -2,7 +2,6 @@ package client
 
 import (
 	"fmt"
-	"time"
 	"tty28/hdo"
 )
 
@@ -17,10 +16,10 @@ type QRiddleResponse struct {
 	} `json:"data"`
 }
 
-func qRiddle(issue string) (map[int32]float64, error) {
+func qRiddle(issue string, ns int) (map[int32]float64, error) {
 	var resp QRiddleResponse
 
-	qUrl := fmt.Sprintf("%s?utoken=%s&cid=%s&stylePath=happy&t=%d", conf.RiddleURL, conf.UToken, issue, time.Now().UnixNano())
+	qUrl := fmt.Sprintf("%s?utoken=%s&cid=%s&stylePath=happy&t=%d", conf.RiddleURL, conf.UToken, issue, ns)
 	err := hdo.Do(conf.Authority, conf.Origin, conf.Referer, conf.SecChUa, conf.SecChUaPlatform, conf.UserAgent, qUrl, &resp)
 	if err != nil {
 		return nil, err

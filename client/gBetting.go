@@ -5,11 +5,10 @@ import (
 	"fmt"
 	"google.golang.org/grpc"
 	"google.golang.org/grpc/credentials/insecure"
-	"time"
 	pb "tty28/proto"
 )
 
-func gBetting(target, issue, sBets, uToken, secChUa, secChUaPlatform, userAgent string) error {
+func gBetting(target, issue, sBets, uToken, secChUa, secChUaPlatform, userAgent string, ns int) error {
 	// Create a client connection to the given target with a credentials which disables transport security
 	conn, err := grpc.Dial(target, grpc.WithTransportCredentials(insecure.NewCredentials()))
 	if err != nil {
@@ -20,7 +19,7 @@ func gBetting(target, issue, sBets, uToken, secChUa, secChUaPlatform, userAgent 
 	client := pb.NewBettingServiceClient(conn)
 
 	req := &pb.BettingRequest{
-		Url: fmt.Sprintf("%s?utoken=%s&cid=%s&bet_data=\\[%s\\]&stylePath=happy&t=%d", conf.BettingURL, uToken, issue, sBets, time.Now().UnixNano()),
+		Url: fmt.Sprintf("%s?utoken=%s&cid=%s&bet_data=\\[%s\\]&stylePath=happy&t=%d", conf.BettingURL, uToken, issue, sBets, ns),
 
 		Authority: conf.Authority,
 		Origin:    conf.Origin,
