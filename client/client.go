@@ -4,7 +4,6 @@ import (
 	"database/sql"
 	"fmt"
 	"log"
-	"math"
 	"time"
 )
 
@@ -69,18 +68,20 @@ func ofM1Gold(g int64) int64 {
 }
 
 func ofGold(fGold float64) int {
-	var iGold int
-	if fGold >= 1<<16 {
-		iGold = int(math.Round(fGold/2000.0) * 2000)
-	} else if fGold >= 1<<15 {
-		iGold = int(math.Round(fGold/1500.0) * 1500)
-	} else if fGold >= 1<<14 {
-		iGold = int(math.Round(fGold/1000.0) * 1000)
-	} else {
-		iGold = int(math.Round(fGold/500.0) * 500)
-	}
+	//var iGold int
+	//if fGold >= 1<<16 {
+	//	iGold = int(math.Round(fGold/2000.0) * 2000)
+	//} else if fGold >= 1<<15 {
+	//	iGold = int(math.Round(fGold/1500.0) * 1500)
+	//} else if fGold >= 1<<14 {
+	//	iGold = int(math.Round(fGold/1000.0) * 1000)
+	//} else {
+	//	iGold = int(math.Round(fGold/500.0) * 500)
+	//}
+	//
+	//return iGold
 
-	return iGold
+	return int(fGold)
 }
 
 func sleepTo(s0 float64) {
