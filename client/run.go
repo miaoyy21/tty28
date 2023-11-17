@@ -8,7 +8,7 @@ import (
 	"time"
 )
 
-func run(db *sql.DB, portGold, portBetting string) {
+func run60(db *sql.DB, portGold, portBetting string, delta float64) {
 	defer func() {
 		if err := recover(); err != nil {
 			log.Printf("【Exception】: %s \n", err)
@@ -19,7 +19,7 @@ func run(db *sql.DB, portGold, portBetting string) {
 	log.Println("//*********************************** 定时任务开始执行 ***********************************//")
 
 	// 第一步 查询本账号的最新期数
-	sleepTo(30.0 + 5*rand.Float64())
+	sleepTo(delta + 5*rand.Float64())
 	issue, mrx, err := r1Fn(ns)
 	if err != nil {
 		log.Printf("【ERR-1】: %s", err.Error())
@@ -27,7 +27,7 @@ func run(db *sql.DB, portGold, portBetting string) {
 	}
 
 	// 第二步 查询托管账户的金额
-	sleepTo(40.0 + 5*rand.Float64())
+	sleepTo(delta + 10 + 5*rand.Float64())
 	users, err := r2Fn(db, portGold, ns)
 	if err != nil {
 		log.Printf("【ERR-2】: %s", err.Error())
@@ -35,7 +35,7 @@ func run(db *sql.DB, portGold, portBetting string) {
 	}
 
 	// 第三步 查询本账户的权重值
-	sleepTo(55.0)
+	sleepTo(delta + 26.5)
 	rds, err := r3Fn(issue, ns)
 	if err != nil {
 		log.Printf("【ERR-3】: %s", err.Error())

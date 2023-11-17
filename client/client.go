@@ -2,7 +2,6 @@ package client
 
 import (
 	"database/sql"
-	"fmt"
 	"log"
 	"time"
 )
@@ -87,14 +86,22 @@ func ofGold(fGold float64) int {
 func sleepTo(s0 float64) {
 	d0 := time.Now().Sub(time.Now().Truncate(time.Minute))
 	if s0-d0.Seconds() < 0 {
-		panic(fmt.Sprintf("目标第%.2f秒小于当前第%.2f秒", s0, d0.Seconds()))
+		for i := 1; i <= 60; i++ {
+			log.Printf("暂停%d秒 ... \n", i)
+
+			time.Sleep(time.Second)
+			d0 = time.Now().Sub(time.Now().Truncate(time.Minute))
+			if s0-d0.Seconds() >= 0 {
+				break
+			}
+		}
 	}
 
 	log.Printf("等待%.2f秒后继续执行 ... \n", s0-d0.Seconds())
 	time.Sleep(time.Second * time.Duration(s0-d0.Seconds()))
 }
 
-func Run(portGold, portBetting string) error {
+func Run(portGold, portBetting string, delta float64) error {
 	// 配置文件
 	if err := InitConfig(); err != nil {
 		return err
@@ -112,14 +119,8 @@ func Run(portGold, portBetting string) error {
 	}
 	log.Println("连接数据库成功 ...")
 
-	// 如果超过30秒，那么等待30秒后运行
-	if time.Now().Second() >= 30 {
-		log.Printf("当前时间为%q，等待30秒 ... \n", time.Now().Format("2006-01-02 15:04:05"))
-		time.Sleep(30 * time.Second)
-	}
-
-	sleepTo(30)
-	go run(db, portGold, portBetting)
+	sleepTo(delta)
+	go run60(db, portGold, portBetting, delta)
 
 	t := time.NewTicker(time.Minute)
 	defer t.Stop()
@@ -133,7 +134,7 @@ func Run(portGold, portBetting string) error {
 			t.Reset(time.Duration(90-d0.Seconds()) * time.Second)
 			log.Printf("【重置时钟】偏移量%.2f秒 ...\n", 30-d0.Seconds())
 
-			go run(db, portGold, portBetting)
+			go run60(db, portGold, portBetting, delta)
 		}
 	}
 }

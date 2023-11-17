@@ -12,10 +12,10 @@ type Config struct {
 	Authority       string `json:"authority"`
 	Origin          string `json:"origin"`
 	Referer         string `json:"referer"`
-	SecChUa         string `json:"sec-ch-ua"`
-	SecChUaPlatform string `json:"sec-ch-ua-platform"`
+	SecChUa         string `json:"sec_ch_ua"`
+	SecChUaPlatform string `json:"sec_ch_ua_platform"`
 	UserAgent       string `json:"user_agent"`
-	UToken          string `json:"utoken"`
+	UToken          string `json:"u_token"`
 
 	IssueURL   string `json:"issue_url"`
 	RiddleURL  string `json:"riddle_url"`
