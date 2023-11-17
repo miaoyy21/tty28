@@ -8,7 +8,7 @@ import (
 	"time"
 )
 
-func run60(db *sql.DB, portGold, portBetting string, delta float64) {
+func run(db *sql.DB, portGold, portBetting string, delta float64) {
 	defer func() {
 		if err := recover(); err != nil {
 			log.Printf("【Exception】: %s \n", err)
@@ -35,7 +35,7 @@ func run60(db *sql.DB, portGold, portBetting string, delta float64) {
 	}
 
 	// 第三步 查询本账户的权重值
-	sleepTo(delta + 26.5)
+	sleepTo(delta + 25)
 	rds, err := r3Fn(issue, ns)
 	if err != nil {
 		log.Printf("【ERR-3】: %s", err.Error())

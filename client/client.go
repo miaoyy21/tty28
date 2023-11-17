@@ -122,7 +122,7 @@ func Run(portGold, portBetting string, delta float64) error {
 	log.Println("连接数据库成功 ...")
 
 	sleepTo(delta)
-	go run60(db, portGold, portBetting, delta)
+	go run(db, portGold, portBetting, delta)
 
 	t := time.NewTicker(time.Minute)
 	defer t.Stop()
@@ -136,7 +136,7 @@ func Run(portGold, portBetting string, delta float64) error {
 			t.Reset(time.Duration(90-d0.Seconds()) * time.Second)
 			log.Printf("【重置时钟】偏移量%.2f秒 ...\n", 30-d0.Seconds())
 
-			go run60(db, portGold, portBetting, delta)
+			go run(db, portGold, portBetting, delta)
 		}
 	}
 }
