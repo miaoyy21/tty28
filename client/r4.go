@@ -53,7 +53,7 @@ func r4Fn(db *sql.DB, portBetting string, issue int, users []*User, mrx float64,
 				return
 			}
 
-			log.Printf("托管账户 %q 执行投注成功 ... \n", user.UserName)
+			log.Printf("(4) 托管账户 %q 执行投注成功 ... \n", user.UserName)
 			if _, err := db.Exec("UPDATE user SET msg = ? WHERE user_id = ?", "Success", user.UserId); err != nil {
 				log.Printf("【ERR-43】: [%s] %s \n", user.UserName, err)
 				return

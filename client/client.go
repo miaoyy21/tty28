@@ -87,10 +87,6 @@ func sleepTo(s0 float64) {
 	d0 := time.Now().Sub(time.Now().Truncate(time.Minute))
 	if s0-d0.Seconds() < 0 {
 		for i := 0; i <= 120; i++ {
-			if i%2 == 0 {
-				log.Printf("暂停%d秒 ... \n", 1+i/2)
-			}
-
 			time.Sleep(500 * time.Millisecond)
 			d0 = time.Now().Sub(time.Now().Truncate(time.Minute))
 			if s0-d0.Seconds() >= 0 {

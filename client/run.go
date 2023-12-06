@@ -9,7 +9,7 @@ import (
 )
 
 func run(db *sql.DB, portGold, portBetting string) {
-	log.Printf("//*********************************** 定时任务开始执行 %s ***********************************// \n", time.Now().Format("2006-01-02 15:04:05"))
+	log.Printf("//*********************************** 定时任务开始执行 %s ***********************************// \n", time.Now().Format("2006-01-02 15:04"))
 
 	go run0(db, portGold, portBetting, 0)
 
@@ -29,7 +29,7 @@ func run0(db *sql.DB, portGold, portBetting string, delta float64) {
 	ns := time.Now().Nanosecond()
 
 	// 第一步 查询本账号的最新期数
-	sleepTo(delta + 5*rand.Float64())
+	sleepTo(delta + 5 + 5*rand.Float64())
 	issue, mrx, err := r1Fn(ns)
 	if err != nil {
 		log.Printf("【ERR-1】: %s", err.Error())
@@ -45,7 +45,7 @@ func run0(db *sql.DB, portGold, portBetting string, delta float64) {
 	}
 
 	// 第三步 查询本账户的权重值
-	sleepTo(delta + 25)
+	sleepTo(delta + 26)
 	rds, err := r3Fn(issue, ns)
 	if err != nil {
 		log.Printf("【ERR-3】: %s", err.Error())

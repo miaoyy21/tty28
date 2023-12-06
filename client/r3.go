@@ -2,6 +2,7 @@ package client
 
 import (
 	"fmt"
+	"log"
 )
 
 func r3Fn(issue int, ns int) (map[int32]float64, error) {
@@ -10,5 +11,6 @@ func r3Fn(issue int, ns int) (map[int32]float64, error) {
 		return nil, err
 	}
 
+	log.Printf("(3) 查询赔率完成 ... \n")
 	return rds, nil
 }
