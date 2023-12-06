@@ -34,6 +34,7 @@ func main() {
 	}
 
 	log.Printf("以【客户端】模式运行 ...\n")
+
 	if err := client.Run(portGold, portBetting); err != nil {
 		log.Fatalf("client.Run() Failure : %s \n", err)
 	}

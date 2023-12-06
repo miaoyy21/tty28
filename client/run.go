@@ -8,7 +8,18 @@ import (
 	"time"
 )
 
-func run(db *sql.DB, portGold, portBetting string, delta float64) {
+func run(db *sql.DB, portGold, portBetting string) {
+	log.Printf("//*********************************** 定时任务开始执行 %s ***********************************// \n", time.Now().Format("2006-01-02 15:04:05"))
+
+	go run0(db, portGold, portBetting, 0)
+
+	sleepTo(30)
+	run0(db, portGold, portBetting, 30)
+
+	log.Println("<<<<<< 全部执行结束 >>>>>>")
+}
+
+func run0(db *sql.DB, portGold, portBetting string, delta float64) {
 	defer func() {
 		if err := recover(); err != nil {
 			log.Printf("【Exception】: %s \n", err)
@@ -16,7 +27,6 @@ func run(db *sql.DB, portGold, portBetting string, delta float64) {
 	}()
 
 	ns := time.Now().Nanosecond()
-	log.Println("//*********************************** 定时任务开始执行 ***********************************//")
 
 	// 第一步 查询本账号的最新期数
 	sleepTo(delta + 5*rand.Float64())
@@ -44,6 +54,4 @@ func run(db *sql.DB, portGold, portBetting string, delta float64) {
 
 	// 第四步 委托账户投注
 	r4Fn(db, portBetting, issue, users, mrx, rds, ns)
-
-	log.Println("全部执行结束 ...")
 }

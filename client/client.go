@@ -103,7 +103,7 @@ func sleepTo(s0 float64) {
 	time.Sleep(time.Second * time.Duration(s0-d0.Seconds()))
 }
 
-func Run(portGold, portBetting string, delta float64) error {
+func Run(portGold, portBetting string) error {
 	// 配置文件
 	if err := InitConfig(); err != nil {
 		return err
@@ -121,8 +121,8 @@ func Run(portGold, portBetting string, delta float64) error {
 	}
 	log.Println("连接数据库成功 ...")
 
-	sleepTo(delta)
-	go run(db, portGold, portBetting, delta)
+	sleepTo(60)
+	go run(db, portGold, portBetting)
 
 	t := time.NewTicker(time.Minute)
 	defer t.Stop()
@@ -132,11 +132,12 @@ func Run(portGold, portBetting string, delta float64) error {
 		select {
 		case <-t.C:
 			// 长时间运行时，可能会产生时间偏移，自动调整
-			d0 := time.Now().Sub(time.Now().Truncate(time.Minute))
+			d0 := time.Now().Sub(time.Now().Truncate(30 * time.Second))
+
 			t.Reset(time.Duration(90-d0.Seconds()) * time.Second)
 			log.Printf("【重置时钟】偏移量%.2f秒 ...\n", 30-d0.Seconds())
 
-			go run(db, portGold, portBetting, delta)
+			go run(db, portGold, portBetting)
 		}
 	}
 }

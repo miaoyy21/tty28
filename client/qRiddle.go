@@ -20,7 +20,7 @@ type QRiddleResponse struct {
 func qRiddle(issue string, ns int) (map[int32]float64, error) {
 	var resp QRiddleResponse
 
-	qUrl := fmt.Sprintf("%s?utoken=%s&cid=%s&stylePath=happy&t=%d", conf.RiddleURL, conf.UToken, issue, ns)
+	qUrl := fmt.Sprintf("%s?utoken=%s&cid=%s&stylePath=%s&t=%d", conf.RiddleURL, conf.UToken, issue, conf.Style, ns)
 	err := hdo.Do(conf.Authority, conf.Origin, conf.Referer, conf.SecChUa, conf.SecChUaPlatform, conf.UserAgent, qUrl, &resp)
 	if err != nil {
 		return nil, err

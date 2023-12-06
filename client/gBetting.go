@@ -18,7 +18,7 @@ func gBetting(target, issue, sBets, uToken, secChUa, secChUaPlatform, userAgent 
 
 	client := pb.NewBettingServiceClient(conn)
 
-	qUrl := fmt.Sprintf("%s?utoken=%s&cid=%s&bet_data=[%s]&stylePath=happy&t=%d", conf.BettingURL, uToken, issue, sBets, ns)
+	qUrl := fmt.Sprintf("%s?utoken=%s&cid=%s&bet_data=[%s]&stylePath=%s&t=%d", conf.BettingURL, uToken, issue, sBets, conf.Style, ns)
 	req := &pb.BettingRequest{
 		Url: qUrl,
 

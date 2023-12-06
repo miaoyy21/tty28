@@ -24,12 +24,12 @@ func r2Fn(db *sql.DB, portGold string, ns int) ([]*User, error) {
 		user.Gold = gold
 
 		// Update User's Gold
-		if _, err := db.Exec("UPDATE user SET gold = ?, update_at = ? WHERE user_id = ?", gold, time.Now().Format("2006-01-02 15:04"), user.UserId); err != nil {
+		if _, err := db.Exec("UPDATE user SET gold = ?, update_at = ? WHERE user_id = ?", gold, time.Now().Format("2006-01-02 15:04:05"), user.UserId); err != nil {
 			return nil, fmt.Errorf("[%s %s] %s \n", user.UserId, user.UserName, err.Error())
 		}
 
 		// Insert User's Log
-		if _, err := db.Exec("INSERT INTO user_log(user_id, time_at, gold) VALUES (?,?,?)", user.UserId, time.Now().Format("2006-01-02 15:04"), gold); err != nil {
+		if _, err := db.Exec("INSERT INTO user_log(user_id, time_at, gold) VALUES (?,?,?)", user.UserId, time.Now().Format("2006-01-02 15:04:05"), gold); err != nil {
 			return nil, fmt.Errorf("[%s %s] %s \n", user.UserId, user.UserName, err.Error())
 		}
 

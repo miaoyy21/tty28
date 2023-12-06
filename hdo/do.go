@@ -35,7 +35,7 @@ func Do(authority, origin, referer, secChUa, secChUaPlatform, userAgent string, 
 	req.Header.Set("user-agent", userAgent)
 
 	// Response
-	http.DefaultClient.Timeout = 3 * time.Second
+	http.DefaultClient.Timeout = 5 * time.Second
 	resp, err := http.DefaultClient.Do(req)
 	if err != nil {
 		return err
