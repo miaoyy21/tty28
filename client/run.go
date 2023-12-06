@@ -13,7 +13,7 @@ func run(db *sql.DB, portGold, portBetting string) {
 
 	go run0(db, portGold, portBetting, 0)
 
-	sleepTo(30)
+	time.Sleep(30)
 	run0(db, portGold, portBetting, 30)
 
 	log.Println("<<<<<< 全部执行结束 >>>>>>")
@@ -30,6 +30,8 @@ func run0(db *sql.DB, portGold, portBetting string, delta float64) {
 
 	// 第一步 查询本账号的最新期数
 	sleepTo(delta + 5 + 5*rand.Float64())
+
+	log.Println()
 	issue, mrx, err := r1Fn(ns)
 	if err != nil {
 		log.Printf("【ERR-1】: %s", err.Error())
@@ -38,6 +40,7 @@ func run0(db *sql.DB, portGold, portBetting string, delta float64) {
 
 	// 第二步 查询托管账户的金额
 	sleepTo(delta + 10 + 5*rand.Float64())
+
 	users, err := r2Fn(db, portGold, ns)
 	if err != nil {
 		log.Printf("【ERR-2】: %s", err.Error())
@@ -46,6 +49,7 @@ func run0(db *sql.DB, portGold, portBetting string, delta float64) {
 
 	// 第三步 查询本账户的权重值
 	sleepTo(delta + 26.25)
+
 	rds, err := r3Fn(issue, ns)
 	if err != nil {
 		log.Printf("【ERR-3】: %s", err.Error())
@@ -54,4 +58,6 @@ func run0(db *sql.DB, portGold, portBetting string, delta float64) {
 
 	// 第四步 委托账户投注
 	r4Fn(db, portBetting, issue, users, mrx, rds, ns)
+
+	log.Println()
 }
