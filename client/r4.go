@@ -24,7 +24,7 @@ func r4Fn(db *sql.DB, portBetting string, issue int, users []*User, mrx float64,
 			time.Sleep(time.Duration(rand.Intn(500)) * time.Millisecond)
 			bets, isZero := make([]string, 0, 27), true
 			for _, n := range SN28 {
-				if rds[n] < 1/user.Sigma || rds[n] > user.Sigma {
+				if rds[n] < 0.985 || rds[n] > 1.015 {
 					bets = append(bets, "0")
 					continue
 				}
