@@ -51,7 +51,7 @@ func run0(db *sql.DB, portGold, portBetting string, delta float64) {
 	sleepTo(delta + 26.25)
 
 	dz := 0.985
-	rds, err := r3Fn(issue, dz, ns)
+	rds, _, err := r3Fn(issue, dz, ns)
 	if err != nil {
 		log.Printf("【ERR-3】: %s", err.Error())
 		return
