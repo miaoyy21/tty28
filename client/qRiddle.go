@@ -34,8 +34,7 @@ func qRiddle(issue string, ns int) (map[int32]float64, float64, error) {
 
 	rts := make(map[int32]float64)
 	for _, r := range resp.Data.List {
-		//rts[r.No] = r.Odd / (1000.0 / float64(STDS1000[r.No]))
-		rts[r.No] = (1000.0 / float64(STDS1000[r.No])) / r.Odd
+		rts[r.No] = r.Odd / (1000.0 / float64(STDS1000[r.No]))
 
 		if rts[r.No] > 1.0 {
 			coverage = coverage + float64(STDS1000[r.No])

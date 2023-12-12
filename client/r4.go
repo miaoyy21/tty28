@@ -22,7 +22,7 @@ func r4Fn(db *sql.DB, portBetting string, issue int, users []*User, mrx float64,
 
 			m1Gold := ofM1Gold(user.Gold)
 			time.Sleep(time.Duration(rand.Intn(500)) * time.Millisecond)
-			bets := make([]string, 0, 27)
+			bets, isZero := make([]string, 0, 27), true
 			for _, n := range SN28 {
 				if rds[n] <= user.Sigma {
 					bets = append(bets, "0")
@@ -37,7 +37,19 @@ func r4Fn(db *sql.DB, portBetting string, issue int, users []*User, mrx float64,
 				}
 
 				fGold := mrx * sig * float64(m1Gold) * float64(STDS1000[n]) / 1000
-				bets = append(bets, strconv.Itoa(ofGold(fGold)))
+
+				iGold := ofGold(fGold)
+				if iGold > 0 {
+					isZero = false
+					bets = append(bets, strconv.Itoa())
+				} else {
+					bets = append(bets, "0")
+				}
+			}
+
+			if isZero {
+				log.Printf("(4) 托管账户 %q 没有符合条件的投注数字 ... \n", user.UserName)
+				return
 			}
 
 			if err := gBetting(
