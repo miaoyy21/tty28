@@ -41,7 +41,7 @@ func r4Fn(db *sql.DB, portBetting string, issue int, users []*User, mrx float64,
 				iGold := ofGold(fGold)
 				if iGold > 0 {
 					isZero = false
-					bets = append(bets, strconv.Itoa())
+					bets = append(bets, strconv.Itoa(iGold))
 				} else {
 					bets = append(bets, "0")
 				}
