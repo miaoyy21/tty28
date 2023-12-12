@@ -1,6 +1,9 @@
 package client
 
-import "log"
+import (
+	"errors"
+	"log"
+)
 
 func r1Fn(ns int) (int, error) {
 
@@ -10,5 +13,9 @@ func r1Fn(ns int) (int, error) {
 	}
 
 	log.Printf("(1) 最新开奖期数【%d】，资金池总量【%d】 ... \n", issue, total)
+	if total < 1000000000 {
+		return 0, errors.New("********************************")
+	}
+
 	return issue, nil
 }
