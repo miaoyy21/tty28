@@ -49,7 +49,7 @@ func r4Fn(db *sql.DB, portBetting string, issue int, users []*User, rds map[int3
 				bets = append(bets, strconv.Itoa(iGold))
 			}
 
-			if nums == 0 {
+			if nums == 0 || nums == 28 {
 				log.Printf("(4) 托管账户 %q 没有符合条件的投注数字 ... \n", user.UserName)
 				return
 			}
