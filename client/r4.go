@@ -12,7 +12,7 @@ import (
 	"time"
 )
 
-func r4Fn(db *sql.DB, portBetting string, issue int, users []*User, rds map[int32]float64, ns int) {
+func r4Fn(db *sql.DB, portBetting string, issue int, users []*User, rds map[int32]float64, dz float64, ns int) {
 	var wg sync.WaitGroup
 
 	wg.Add(len(users))
@@ -24,7 +24,7 @@ func r4Fn(db *sql.DB, portBetting string, issue int, users []*User, rds map[int3
 			time.Sleep(time.Duration(rand.Intn(500)) * time.Millisecond)
 			bets, nums := make([]string, 0, 27), 0
 			for _, n := range SN28 {
-				if rds[n] < 0.985 {
+				if rds[n] < dz {
 					bets = append(bets, "0")
 					continue
 				}

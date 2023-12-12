@@ -17,7 +17,7 @@ type QRiddleResponse struct {
 	} `json:"data"`
 }
 
-func qRiddle(issue string, ns int) (map[int32]float64, float64, error) {
+func qRiddle(issue string, dz float64, ns int) (map[int32]float64, float64, error) {
 	var resp QRiddleResponse
 
 	qUrl := fmt.Sprintf("%s?utoken=%s&cid=%s&stylePath=%s&t=%d", conf.RiddleURL, conf.UToken, issue, conf.Style, ns)
@@ -36,12 +36,13 @@ func qRiddle(issue string, ns int) (map[int32]float64, float64, error) {
 	for _, r := range resp.Data.List {
 		rts[r.No] = r.Odd / (1000.0 / float64(STDS1000[r.No]))
 
-		if rts[r.No] > 1.0 {
-			coverage = coverage + float64(STDS1000[r.No])
-			log.Printf("竞猜数字【 ✓ %02d】，实际赔率【%7.2f】，赔率系数【%.3f】 \n", r.No, r.Odd, rts[r.No])
-		} else {
+		if rts[r.No] < dz {
 			log.Printf("竞猜数字【   %02d】，实际赔率【%7.2f】，赔率系数【%.3f】 \n", r.No, r.Odd, rts[r.No])
+			continue
 		}
+
+		coverage = coverage + float64(STDS1000[r.No])
+		log.Printf("竞猜数字【 ✓ %02d】，实际赔率【%7.2f】，赔率系数【%.3f】 \n", r.No, r.Odd, rts[r.No])
 	}
 
 	return rts, coverage, nil
