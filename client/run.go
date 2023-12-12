@@ -57,7 +57,7 @@ func run0(db *sql.DB, portGold, portBetting string, delta float64) {
 		return
 	}
 
-	if dev < 0.9950 {
+	if dev < 1.0 {
 		log.Println("*****************************")
 		return
 	}
