@@ -32,7 +32,7 @@ func run0(db *sql.DB, portGold, portBetting string, delta float64) {
 	sleepTo(delta + 5 + 5*rand.Float64())
 
 	log.Println()
-	issue, mrx, err := r1Fn(ns)
+	issue, err := r1Fn(ns)
 	if err != nil {
 		log.Printf("【ERR-1】: %s", err.Error())
 		return
@@ -57,7 +57,7 @@ func run0(db *sql.DB, portGold, portBetting string, delta float64) {
 	}
 
 	// 第四步 委托账户投注
-	r4Fn(db, portBetting, issue, users, mrx, rds, ns)
+	r4Fn(db, portBetting, issue, users, rds, ns)
 
 	log.Println()
 }
