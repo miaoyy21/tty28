@@ -14,6 +14,9 @@ type QIssueResponse struct {
 			Status   int    `json:"status"`
 			Cid      int    `json:"cid"`
 			TotalBet string `json:"total_bet"`
+
+			Bet   interface{} `json:"bet"`
+			Prize interface{} `json:"prize"`
 		} `json:"list"`
 	} `json:"data"`
 }
@@ -37,6 +40,8 @@ func qIssueGold(ns int) (int, int64, error) {
 
 	var issue int
 	var gold, min int64
+	var wins, fails int
+	var winGold int64
 	for _, l := range resp.Data.List {
 		if l.Status == 2 {
 			if min == 0 {
@@ -45,14 +50,41 @@ func qIssueGold(ns int) (int, int64, error) {
 					return 0, 0, err
 				}
 			}
-		} else {
+
+			continue
+		}
+
+		if issue <= 0 {
 			issue = l.Cid
 			gold, err = hdo.Int64(l.TotalBet)
 			if err != nil {
 				return 0, 0, err
 			}
-			break
 		}
+
+		var bet, prize int64
+
+		bet, err = hdo.Int64(fmt.Sprint(l.Bet))
+		if err != nil {
+			return 0, 0, err
+		}
+
+		prize, err = hdo.Int64(fmt.Sprint(l.Prize))
+		if err != nil {
+			return 0, 0, err
+		}
+
+		if prize > bet {
+			wins++
+		} else if prize < bet {
+			fails++
+		}
+
+		winGold = winGold + prize - bet
+	}
+
+	if winGold < 0 && wins+fails > 5 {
+		return 0, 0, fmt.Errorf("一直在亏损，并且投注次数超过%d次，不进行投注 ... ", 5)
 	}
 
 	return issue, gold - min, nil
