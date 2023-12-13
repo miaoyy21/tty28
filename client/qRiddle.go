@@ -31,14 +31,14 @@ func qRiddle(issue string, dz float64, ns int) (map[int32]float64, float64, floa
 		return nil, 0, 0, fmt.Errorf("接收到状态错误吗 : [%d] %s", resp.Code, resp.Msg)
 	}
 
+	var dev float64
 	var coverage float64
-	var exp float64
 
 	rts := make(map[int32]float64)
 	for _, r := range resp.Data.List {
 		rts[r.No] = r.Odd / (1000.0 / float64(STDS1000[r.No]))
-		exp = exp + (float64(STDS1000[r.No])/1000)*rts[r.No]
 
+		dev = dev + math.Abs(rts[r.No]-1.0)*(float64(STDS1000[r.No])/1000)
 		if rts[r.No] < dz {
 			log.Printf("竞猜数字【   %02d】，实际赔率【%7.2f】，赔率系数【%.3f】 \n", r.No, r.Odd, rts[r.No])
 			continue
@@ -46,12 +46,6 @@ func qRiddle(issue string, dz float64, ns int) (map[int32]float64, float64, floa
 
 		coverage = coverage + float64(STDS1000[r.No])
 		log.Printf("竞猜数字【 ✓ %02d】，实际赔率【%7.2f】，赔率系数【%.3f】 \n", r.No, r.Odd, rts[r.No])
-	}
-
-	var dev float64
-	for n, r0 := range rts {
-		r1 := (float64(STDS1000[n]) / 1000) * (r0 / (1000.0 / float64(STDS1000[n])))
-		dev = dev + (r1-exp)*(r1-exp)*(float64(STDS1000[n])/1000)
 	}
 
 	return rts, coverage, math.Sqrt(dev), nil

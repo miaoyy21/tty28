@@ -57,7 +57,7 @@ func run0(db *sql.DB, portGold, portBetting string, delta float64) {
 		return
 	}
 
-	if dev < 1.0 {
+	if dev < 0.15 {
 		log.Println("平均方差太低，不进行投注 ... ")
 		return
 	}
