@@ -48,10 +48,10 @@ func run0(db *sql.DB, portGold, portBetting string, delta float64) {
 	}
 
 	// 第三步 查询本账户的权重值
-	sleepTo(delta + 25.25)
+	sleepTo(delta + 25.00)
 
 	dz := 1.0
-	rds, _, err := r3Fn(issue, dz, ns)
+	rds, err := r3Fn(issue, dz, ns)
 	if err != nil {
 		log.Printf("【ERR-3】: %s", err.Error())
 		return
