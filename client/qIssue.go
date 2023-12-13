@@ -80,7 +80,9 @@ func qIssueGold(ns int) (int, int64, error) {
 			fails++
 		}
 
-		winGold = winGold + prize - bet
+		if wins+fails < 5 {
+			winGold = winGold + prize - bet
+		}
 	}
 
 	if winGold < 0 && wins+fails > 5 {
