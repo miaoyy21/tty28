@@ -41,6 +41,7 @@ func run0(db *sql.DB, portGold, portBetting string, delta float64) {
 
 	if stop {
 		log.Printf("一直在亏损，并且投注次数超过%d次，不进行投注 ... ", sn)
+		return
 	}
 
 	// 第二步 查询托管账户的金额
