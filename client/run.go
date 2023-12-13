@@ -32,10 +32,15 @@ func run0(db *sql.DB, portGold, portBetting string, delta float64) {
 	sleepTo(delta + 5 + 5*rand.Float64())
 
 	log.Println()
-	issue, err := r1Fn(ns)
+	sn := 5
+	issue, stop, err := r1Fn(sn, ns)
 	if err != nil {
 		log.Printf("【ERR-1】: %s", err.Error())
 		return
+	}
+
+	if stop {
+		log.Printf("一直在亏损，并且投注次数超过%d次，不进行投注 ... ", sn)
 	}
 
 	// 第二步 查询托管账户的金额
