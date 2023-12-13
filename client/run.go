@@ -48,7 +48,7 @@ func run0(db *sql.DB, portGold, portBetting string, delta float64) {
 	}
 
 	// 第三步 查询本账户的权重值
-	sleepTo(delta + 26.25)
+	sleepTo(delta + 27.25)
 
 	dz := 1.0
 	rds, dev, err := r3Fn(issue, dz, ns)
@@ -57,7 +57,7 @@ func run0(db *sql.DB, portGold, portBetting string, delta float64) {
 		return
 	}
 
-	if dev < 0.15 {
+	if dev < 0.125 {
 		log.Println("平均方差太低，不进行投注 ... ")
 		return
 	}

@@ -11,6 +11,7 @@ type QRiddleResponse struct {
 	Code int    `json:"code"`
 	Msg  string `json:"msg"`
 	Data struct {
+		Id   int `json:"id"`
 		List []struct {
 			No  int32   `json:"no"`
 			Odd float64 `json:"odd"`
@@ -40,12 +41,12 @@ func qRiddle(issue string, dz float64, ns int) (map[int32]float64, float64, floa
 
 		dev = dev + math.Abs(rts[r.No]-1.0)*(float64(STDS1000[r.No])/1000)
 		if rts[r.No] < dz {
-			log.Printf("竞猜数字【   %02d】，实际赔率【%7.2f】，赔率系数【%.3f】 \n", r.No, r.Odd, rts[r.No])
+			log.Printf("【%d】：竞猜数字【   %02d】，实际赔率【%7.2f】，赔率系数【%.3f】 \n", resp.Data.Id, r.No, r.Odd, rts[r.No])
 			continue
 		}
 
 		coverage = coverage + float64(STDS1000[r.No])
-		log.Printf("竞猜数字【 ✓ %02d】，实际赔率【%7.2f】，赔率系数【%.3f】 \n", r.No, r.Odd, rts[r.No])
+		log.Printf("【%d】：竞猜数字【 ✓ %02d】，实际赔率【%7.2f】，赔率系数【%.3f】 \n", resp.Data.Id, r.No, r.Odd, rts[r.No])
 	}
 
 	return rts, coverage, math.Sqrt(dev), nil
