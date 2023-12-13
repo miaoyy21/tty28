@@ -83,6 +83,10 @@ func qIssueGold(sn int, ns int) (int, int64, bool, error) {
 		if wins+fails < sn {
 			wGold = wGold + prize - bet
 		}
+
+		if wGold < 0 && wins+fails > sn {
+			break
+		}
 	}
 
 	return issue, gold - min, wGold < 0 && wins+fails > sn, nil
