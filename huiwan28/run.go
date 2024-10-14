@@ -31,7 +31,19 @@ func run() {
 	log.Printf("【2】开奖历史的各数字间隔频率：\n")
 	for _, num := range SN28 {
 		space := user.Spaces[num]
-		rate := 1.25 - space
+
+		var rate float64
+		if space <= 0.5 {
+			rate = 1.0
+		} else if space <= 1.0 {
+			rate = 0.75
+		} else if space <= 1.5 {
+			rate = 0.50
+		} else if space <= 2.0 {
+			rate = 0.25
+		} else {
+			rate = 0
+		}
 
 		iGold := ofGold(conf.Base * rate * float64(STDS1000[num]) / 1000)
 		if iGold > 0 {
