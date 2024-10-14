@@ -4,6 +4,7 @@ import (
 	"fmt"
 	"net/url"
 	"strings"
+	"tty28/base"
 )
 
 type RecordRequest struct {
@@ -14,7 +15,7 @@ type RecordRequest struct {
 
 func qRecord(issue string, sBets []string) error {
 	sNums := make([]string, 0, 28)
-	for _, num := range SN28 {
+	for _, num := range base.SN28 {
 		sNums = append(sNums, fmt.Sprintf("%d", num))
 	}
 
@@ -29,7 +30,7 @@ func qRecord(issue string, sBets []string) error {
 		"referer": fmt.Sprintf("https://www.huiwan28.com/Culmination/record/periods/%s.html", issue),
 	}
 
-	if err := Do("huiwan28_record", headers, strings.NewReader(values.Encode()), nil); err != nil {
+	if err := base.Do("luck_record", headers, strings.NewReader(values.Encode()), nil); err != nil {
 		return err
 	}
 

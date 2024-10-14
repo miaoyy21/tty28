@@ -6,6 +6,7 @@ import (
 	"log"
 	"strconv"
 	"strings"
+	"tty28/base"
 )
 
 type User struct {
@@ -21,7 +22,7 @@ type User struct {
 func qCharts() (*User, error) {
 	buf := new(bytes.Buffer)
 
-	if err := Do("huiwan28_charts", map[string]string{}, nil, buf); err != nil {
+	if err := base.Do("luck_charts", map[string]string{}, nil, buf); err != nil {
 		return nil, err
 	}
 
@@ -66,7 +67,7 @@ func qCharts() (*User, error) {
 				}
 
 				num := int32(ith) - 1
-				user.Spaces[num] = f64 / (1000 / float64(STDS1000[num]))
+				user.Spaces[num] = f64 / (1000 / float64(base.STDS1000[num]))
 
 				if f64 == 0 {
 					user.Result = num

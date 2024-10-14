@@ -1,4 +1,4 @@
-package luck
+package base
 
 import (
 	"encoding/json"
@@ -6,12 +6,12 @@ import (
 	"path/filepath"
 )
 
-type Config struct {
+type config struct {
 	Cookie string  `json:"cookie"`
 	Base   float64 `json:"base"`
 }
 
-var conf Config
+var Config config
 
 func InitConfig() error {
 	dir, err := os.Getwd()
@@ -19,12 +19,12 @@ func InitConfig() error {
 		return err
 	}
 
-	bs, err := os.ReadFile(filepath.Join(dir, "config/huiwan28.json"))
+	bs, err := os.ReadFile(filepath.Join(dir, "conf/huiwan28.json"))
 	if err != nil {
 		return err
 	}
 
-	if err := json.Unmarshal(bs, &conf); err != nil {
+	if err := json.Unmarshal(bs, &Config); err != nil {
 		return err
 	}
 

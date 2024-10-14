@@ -2,13 +2,13 @@ package main
 
 import (
 	"log"
-	"tty28/config"
+	"tty28/conf"
 	"tty28/luck"
 )
 
 func main() {
 	// 加载配置模版
-	if err := config.LoadTemplates(); err != nil {
+	if err := conf.LoadTemplates(); err != nil {
 		log.Panicf("config.LoadTemplates() Failure :: %s", err.Error())
 	}
 

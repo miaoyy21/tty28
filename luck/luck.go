@@ -3,11 +3,12 @@ package luck
 import (
 	"log"
 	"time"
+	"tty28/base"
 )
 
 func Run() error {
 	// 配置文件
-	if err := InitConfig(); err != nil {
+	if err := base.InitConfig(); err != nil {
 		return err
 	}
 
@@ -17,7 +18,7 @@ func Run() error {
 		time.Sleep(30 * time.Second)
 	}
 
-	sleepTo(30)
+	base.SleepTo(30)
 	go run()
 
 	t := time.NewTicker(time.Minute)
@@ -33,7 +34,7 @@ func Run() error {
 			log.Printf("【重置时钟】偏移量%.2f秒 ...\n", 30-d0.Seconds())
 
 			// 重新加载配置
-			if err := InitConfig(); err != nil {
+			if err := base.InitConfig(); err != nil {
 				log.Printf("重新加载配置文件错误：%s \n", err.Error())
 				continue
 			}

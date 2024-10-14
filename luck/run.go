@@ -4,6 +4,7 @@ import (
 	"fmt"
 	"log"
 	"math/rand"
+	"tty28/base"
 )
 
 var parsed = 3
@@ -18,7 +19,7 @@ func run() {
 	log.Println("//*********************************** 定时任务开始执行 ***********************************//")
 
 	// 第1步：查询开奖历史
-	sleepTo(30 + 5*rand.Float64())
+	base.SleepTo(30 + 5*rand.Float64())
 	user, err := qCharts()
 	if err != nil {
 		log.Printf("【ERR-0】: %s \n", err.Error())
@@ -31,7 +32,7 @@ func run() {
 	// 第2步：打印各间隔频率
 	sBets, total := make([]string, 0), uint32(0)
 	log.Printf("【2】开奖历史的各数字间隔频率：\n")
-	for _, num := range SN28 {
+	for _, num := range base.SN28 {
 		space := user.Spaces[num]
 
 		var rate float64
@@ -45,7 +46,7 @@ func run() {
 			rate = 0
 		}
 
-		iGold := uint32(conf.Base * rate * float64(STDS1000[num]) / 1000)
+		iGold := uint32(base.Config.Base * rate * float64(base.STDS1000[num]) / 1000)
 		if iGold > 0 {
 			log.Printf("\t竞猜数字【%02d】：间隔频率【%5.3f】，投注系数【%4.2f】，投注金额【%6d】；\n", num, space, rate, iGold)
 		} else {
@@ -55,11 +56,11 @@ func run() {
 		total = total + iGold
 		sBets = append(sBets, fmt.Sprintf("%d", iGold))
 	}
-	nextIssue := ofNextIssue(user.Issue)
-	log.Printf("【2】投注期数【%s】，投注基数【%d】，投注总额【%d】...\n", nextIssue, int(conf.Base), total)
+	nextIssue := base.OfNextIssue(user.Issue)
+	log.Printf("【2】投注期数【%s】，投注基数【%d】，投注总额【%d】...\n", nextIssue, int(base.Config.Base), total)
 
 	// 第3步：执行投注
-	sleepTo(40 + 5*rand.Float64())
+	base.SleepTo(40 + 5*rand.Float64())
 	log.Printf("【3】执行投注 ...")
 	if err := qRecord(nextIssue, sBets); err != nil {
 		log.Printf("【ERR-3】: %s \n", err.Error())

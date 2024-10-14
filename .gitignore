@@ -20,7 +20,7 @@
 # Go workspace file
 go.work
 
-config/huiwan28.json
+conf/huiwan28.json
 tty28_windows_386.exe
 tty28_linux_386
 tty28_darwin_arm64
