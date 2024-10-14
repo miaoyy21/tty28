@@ -4,6 +4,7 @@ import (
 	"fmt"
 	"io"
 	"log"
+	"math"
 	"net/http"
 	"time"
 	"tty28/config"
@@ -17,6 +18,30 @@ func sleepTo(s0 float64) {
 
 	log.Printf("等待%.2f秒后继续执行 ... \n", s0-d0.Seconds())
 	time.Sleep(time.Second * time.Duration(s0-d0.Seconds()))
+}
+
+func ofGold(fGold float64) uint32 {
+	var iGold uint32
+
+	if fGold >= 1<<16 {
+		iGold = uint32(math.Round(fGold/2000.0) * 2000)
+	} else if fGold >= 1<<15 {
+		iGold = uint32(math.Round(fGold/1500.0) * 1500)
+	} else if fGold >= 1<<14 {
+		iGold = uint32(math.Round(fGold/1000.0) * 1000)
+	} else if fGold >= 1<<12 {
+		iGold = uint32(math.Round(fGold/250.0) * 250)
+	} else if fGold >= 1<<10 {
+		iGold = uint32(math.Round(fGold/100.0) * 100)
+	} else if fGold >= 1<<8 {
+		iGold = uint32(math.Round(fGold/50.0) * 50)
+	} else if fGold >= 1<<6 {
+		iGold = uint32(math.Round(fGold/25.0) * 25)
+	} else {
+		iGold = 0
+	}
+
+	return iGold
 }
 
 // Do 执行HTTP请求
@@ -49,8 +74,10 @@ func Do(tempName string, headers map[string]string, r io.Reader, w io.Writer) er
 	}
 	defer resp.Body.Close()
 
-	if _, err := io.Copy(w, resp.Body); err != nil {
-		return err
+	if w != nil {
+		if _, err := io.Copy(w, resp.Body); err != nil {
+			return err
+		}
 	}
 
 	return nil

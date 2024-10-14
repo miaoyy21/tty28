@@ -7,8 +7,8 @@ import (
 )
 
 type Config struct {
-	Cookie string `json:"cookie"`
-	Base   int64  `json:"base"`
+	Cookie string  `json:"cookie"`
+	Base   float64 `json:"base"`
 }
 
 var conf Config
