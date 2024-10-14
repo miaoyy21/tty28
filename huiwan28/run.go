@@ -16,7 +16,7 @@ func run() {
 	log.Println("//*********************************** 定时任务开始执行 ***********************************//")
 
 	// 第1步：查询开奖历史
-	sleepTo(30 + 10*rand.Float64())
+	sleepTo(30 + 5*rand.Float64())
 	user, err := qCharts()
 	if err != nil {
 		log.Printf("【ERR-0】: %s \n", err.Error())
@@ -31,7 +31,7 @@ func run() {
 	log.Printf("【2】开奖历史的各数字间隔频率：\n")
 	for _, num := range SN28 {
 		space := user.Spaces[num]
-		rate := 1.5 - space
+		rate := 1.25 - space
 
 		iGold := ofGold(conf.Base * rate * float64(STDS1000[num]) / 1000)
 		if iGold > 0 {
@@ -43,12 +43,13 @@ func run() {
 		total = total + iGold
 		sBets = append(sBets, fmt.Sprintf("%d", iGold))
 	}
-	log.Printf("【2】投注期数【%d】，投注基数【%d】，投注总额【%d】...\n", user.Issue+1, int(conf.Base), total)
+	nextIssue := ofNextIssue(user.Issue)
+	log.Printf("【2】投注期数【%s】，投注基数【%d】，投注总额【%d】...\n", nextIssue, int(conf.Base), total)
 
 	// 第3步：执行投注
-	sleepTo(40 + 5*rand.Float64())
+	sleepTo(35 + 5*rand.Float64())
 	log.Printf("【3】执行投注 ...")
-	if err := qRecord(user.Issue+1, sBets); err != nil {
+	if err := qRecord(nextIssue, sBets); err != nil {
 		log.Printf("【ERR-3】: %s \n", err.Error())
 		return
 	}

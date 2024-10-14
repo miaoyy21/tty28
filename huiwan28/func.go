@@ -6,6 +6,7 @@ import (
 	"log"
 	"math"
 	"net/http"
+	"strings"
 	"time"
 	"tty28/config"
 )
@@ -18,6 +19,17 @@ func sleepTo(s0 float64) {
 
 	log.Printf("等待%.2f秒后继续执行 ... \n", s0-d0.Seconds())
 	time.Sleep(time.Second * time.Duration(s0-d0.Seconds()))
+}
+
+func ofNextIssue(issue int64) string {
+	sDt := time.Now().Format("20060102")
+	sIssue := fmt.Sprintf("%d", issue+1)
+
+	if strings.EqualFold(sDt, sIssue[:8]) {
+		return sIssue
+	}
+
+	return fmt.Sprintf("%s0001", sDt)
 }
 
 func ofGold(fGold float64) uint32 {

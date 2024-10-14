@@ -5,16 +5,10 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="2a58a44b-93bd-4375-831b-926687b613db" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/huiwan28/q_record.go" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/config/huiwan28_record.tpl" beforeDir="false" afterPath="$PROJECT_DIR$/config/huiwan28_record.tpl" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/huiwan28/config.go" beforeDir="false" afterPath="$PROJECT_DIR$/huiwan28/config.go" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/huiwan28/constant.go" beforeDir="false" afterPath="$PROJECT_DIR$/huiwan28/constant.go" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/huiwan28/func.go" beforeDir="false" afterPath="$PROJECT_DIR$/huiwan28/func.go" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/huiwan28/huiwan28_test.go" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/huiwan28/q_charts.go" beforeDir="false" afterPath="$PROJECT_DIR$/huiwan28/q_charts.go" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/huiwan28/q_record.go" beforeDir="false" afterPath="$PROJECT_DIR$/huiwan28/q_record.go" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/huiwan28/run.go" beforeDir="false" afterPath="$PROJECT_DIR$/huiwan28/run.go" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/index.html" beforeDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
