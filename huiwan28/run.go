@@ -47,7 +47,7 @@ func run() {
 	log.Printf("【2】投注期数【%s】，投注基数【%d】，投注总额【%d】...\n", nextIssue, int(conf.Base), total)
 
 	// 第3步：执行投注
-	sleepTo(35 + 5*rand.Float64())
+	sleepTo(40 + 5*rand.Float64())
 	log.Printf("【3】执行投注 ...")
 	if err := qRecord(nextIssue, sBets); err != nil {
 		log.Printf("【ERR-3】: %s \n", err.Error())
