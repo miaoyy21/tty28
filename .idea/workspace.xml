@@ -5,15 +5,12 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="2a58a44b-93bd-4375-831b-926687b613db" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/huiwan28/q_charts.go" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/huiwan28/huiwan28_test.go" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/index.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/config/config.go" beforeDir="false" afterPath="$PROJECT_DIR$/config/templates.go" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/config/config_test.go" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/config/huiwan28_bets.tpl" beforeDir="false" afterPath="$PROJECT_DIR$/config/huiwan28_record.tpl" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/huiwan28/config.go" beforeDir="false" afterPath="$PROJECT_DIR$/huiwan28/config.go" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/config/templates.go" beforeDir="false" afterPath="$PROJECT_DIR$/config/templates.go" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/huiwan28/func.go" beforeDir="false" afterPath="$PROJECT_DIR$/huiwan28/func.go" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/huiwan28/huiwan28.go" beforeDir="false" afterPath="$PROJECT_DIR$/huiwan28/huiwan28.go" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/main.go" beforeDir="false" afterPath="$PROJECT_DIR$/main.go" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/huiwan28/q_charts.go" beforeDir="false" afterPath="$PROJECT_DIR$/huiwan28/q_charts.go" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -83,7 +80,7 @@
       <recent name="$PROJECT_DIR$/huiwan28" />
     </key>
   </component>
-  <component name="RunManager" selected="Go Build.go build main.go">
+  <component name="RunManager" selected="Go Test.huiwan28_test.go">
     <configuration default="true" type="GoApplicationRunConfiguration" factoryName="Go Application">
       <module name="tty28" />
       <working_directory value="$PROJECT_DIR$" />
@@ -135,8 +132,20 @@
       <framework value="gotest" />
       <method v="2" />
     </configuration>
+    <configuration name="huiwan28_test.go" type="GoTestRunConfiguration" factoryName="Go Test" temporary="true" nameIsGenerated="true">
+      <module name="tty28" />
+      <working_directory value="$PROJECT_DIR$/huiwan28" />
+      <root_directory value="$PROJECT_DIR$" />
+      <kind value="FILE" />
+      <package value="tty28" />
+      <directory value="$PROJECT_DIR$" />
+      <filePath value="$PROJECT_DIR$/huiwan28/huiwan28_test.go" />
+      <framework value="gotest" />
+      <method v="2" />
+    </configuration>
     <recent_temporary>
       <list>
+        <item itemvalue="Go Test.huiwan28_test.go" />
         <item itemvalue="Go Build.go build main.go" />
         <item itemvalue="Go Test.config_test.go" />
         <item itemvalue="Go Test.hdo_test.go" />

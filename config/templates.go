@@ -1,6 +1,8 @@
 package config
 
 import (
+	"bytes"
+	"encoding/json"
 	"fmt"
 	"io/fs"
 	"log"
@@ -78,7 +80,13 @@ func LoadTemplates() error {
 		}
 
 		Templates[tempName] = reqTemp
-		log.Printf("加载模版	%q	%#v", tempName, reqTemp)
+
+		buf := new(bytes.Buffer)
+
+		encode := json.NewEncoder(buf)
+		encode.SetIndent("", "\t")
+		encode.Encode(reqTemp)
+		log.Printf("加载模版	%s\n%s", tempName, buf.String())
 
 		return nil
 	}); err != nil {
