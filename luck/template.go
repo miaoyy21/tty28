@@ -1,7 +1,7 @@
-package huiwan28
+package luck
 
 const chartsTemplate = `
-curl 'https://www.huiwan28.com/Charts/index.html' \
+curl 'https://www.luck.com/Charts/index.html' \
   -H 'accept: text/html,application/xhtml+xml,application/xml;q=0.9,image/avif,image/webp,image/apng,*/*;q=0.8,application/signed-exchange;v=b3;q=0.7' \
   -H 'accept-language: zh-CN,zh;q=0.9' \
   -H 'cache-control: no-cache' \

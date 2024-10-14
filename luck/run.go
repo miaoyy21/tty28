@@ -1,10 +1,12 @@
-package huiwan28
+package luck
 
 import (
 	"fmt"
 	"log"
 	"math/rand"
 )
+
+var parsed = 3
 
 func run() {
 	defer func() {
@@ -33,21 +35,19 @@ func run() {
 		space := user.Spaces[num]
 
 		var rate float64
-		if space <= 0.5 {
-			rate = 1.0
-		} else if space <= 1.0 {
-			rate = 0.75
-		} else if space <= 1.5 {
-			rate = 0.50
-		} else if space <= 2.0 {
-			rate = 0.25
+		if space <= 0.67 {
+			rate = 1.00
+		} else if space <= 1.00 {
+			rate = 0.80
+		} else if space <= 1.33 {
+			rate = 0.40
 		} else {
 			rate = 0
 		}
 
-		iGold := ofGold(conf.Base * rate * float64(STDS1000[num]) / 1000)
+		iGold := uint32(conf.Base * rate * float64(STDS1000[num]) / 1000)
 		if iGold > 0 {
-			log.Printf("\t竞猜数字【%02d】：间隔频率【%5.3f】，投注系数【%5.3f】，投注金额【%6d】；\n", num, space, rate, iGold)
+			log.Printf("\t竞猜数字【%02d】：间隔频率【%5.3f】，投注系数【%4.2f】，投注金额【%6d】；\n", num, space, rate, iGold)
 		} else {
 			log.Printf("\t竞猜数字【%02d】：间隔频率【%5.3f】，投注系数【 - 】；\n", num, space)
 		}
@@ -66,5 +66,5 @@ func run() {
 		return
 	}
 
-	log.Println("【9】 投注成功，全部执行结束 ...")
+	log.Println("【9】投注成功，全部执行结束 ...")
 }

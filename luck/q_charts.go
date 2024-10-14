@@ -1,4 +1,4 @@
-package huiwan28
+package luck
 
 import (
 	"bytes"
@@ -56,7 +56,7 @@ func qCharts() (*User, error) {
 		switch itr {
 		case 1:
 			str.Find("th").Each(func(ith int, sth *goquery.Selection) {
-				if ith == 0 || ith >= 28 {
+				if ith == 0 || ith >= 29 {
 					return
 				}
 

@@ -3,7 +3,7 @@ package main
 import (
 	"log"
 	"tty28/config"
-	"tty28/huiwan28"
+	"tty28/luck"
 )
 
 func main() {
@@ -13,7 +13,7 @@ func main() {
 	}
 
 	// 运行定时任务
-	if err := huiwan28.Run(); err != nil {
-		log.Printf("huiwan28.Run() Failure :: %s \n", err.Error())
+	if err := luck.Run(); err != nil {
+		log.Printf("luck.Run() Failure :: %s \n", err.Error())
 	}
 }

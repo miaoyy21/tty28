@@ -1,4 +1,4 @@
-package huiwan28
+package luck
 
 import (
 	"fmt"
