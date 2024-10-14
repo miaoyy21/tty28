@@ -5,11 +5,11 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="2a58a44b-93bd-4375-831b-926687b613db" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/huiwan28/huiwan28_test.go" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/index.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/huiwan28/constant.go" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/config/templates.go" beforeDir="false" afterPath="$PROJECT_DIR$/config/templates.go" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/huiwan28/func.go" beforeDir="false" afterPath="$PROJECT_DIR$/huiwan28/func.go" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/go.mod" beforeDir="false" afterPath="$PROJECT_DIR$/go.mod" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/go.sum" beforeDir="false" afterPath="$PROJECT_DIR$/go.sum" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/huiwan28/huiwan28_test.go" beforeDir="false" afterPath="$PROJECT_DIR$/huiwan28/huiwan28_test.go" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/huiwan28/q_charts.go" beforeDir="false" afterPath="$PROJECT_DIR$/huiwan28/q_charts.go" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -61,7 +61,7 @@
     "last_opened_file_path": "/Users/miaojingyi/Documents/dev/go/src/tty28/config",
     "node.js.detected.package.eslint": "true",
     "node.js.selected.package.eslint": "(autodetect)",
-    "settings.editor.selected.configurable": "go.vgo"
+    "settings.editor.selected.configurable": "go.sdk"
   },
   "keyToStringList": {
     "DatabaseDriversLRU": [
