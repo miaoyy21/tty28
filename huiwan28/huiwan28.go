@@ -18,7 +18,6 @@ func Run() error {
 	}
 
 	sleepTo(30)
-	//go run1(db, portGold, portBetting)
 	go run()
 
 	t := time.NewTicker(time.Minute)
@@ -40,7 +39,6 @@ func Run() error {
 			}
 			log.Printf("重载配置文件成功 ...\n")
 
-			//go run1(db, portGold, portBetting)
 			go run()
 		}
 	}

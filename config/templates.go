@@ -3,6 +3,7 @@ package config
 import (
 	"fmt"
 	"io/fs"
+	"log"
 	"os"
 	"path/filepath"
 	"strings"
@@ -15,13 +16,14 @@ type RequestTemplate struct {
 	Headers map[string]string
 }
 
-func ParseTemplates() (map[string]*RequestTemplate, error) {
+var Templates = make(map[string]RequestTemplate)
+
+func LoadTemplates() error {
 	dir, err := os.Getwd()
 	if err != nil {
-		return nil, err
+		return err
 	}
 
-	reqTemps := make(map[string]*RequestTemplate)
 	if err := filepath.Walk(dir, func(path string, info fs.FileInfo, err error) error {
 		if info.IsDir() {
 			return nil
@@ -37,7 +39,7 @@ func ParseTemplates() (map[string]*RequestTemplate, error) {
 			return err
 		}
 
-		reqTemp := &RequestTemplate{
+		reqTemp := RequestTemplate{
 			Method:  "GET",
 			Headers: make(map[string]string),
 		}
@@ -75,11 +77,13 @@ func ParseTemplates() (map[string]*RequestTemplate, error) {
 			}
 		}
 
-		reqTemps[tempName] = reqTemp
+		Templates[tempName] = reqTemp
+		log.Printf("加载模版	%q	%#v", tempName, reqTemp)
+
 		return nil
 	}); err != nil {
-		return nil, err
+		return err
 	}
 
-	return reqTemps, nil
+	return nil
 }

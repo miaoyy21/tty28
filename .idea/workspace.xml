@@ -5,39 +5,15 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="2a58a44b-93bd-4375-831b-926687b613db" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/config/config.go" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/config/config_test.go" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/config/huiwan28_bets.tpl" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/config/huiwan28_charts.tpl" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/huiwan28/func.go" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/huiwan28/huiwan28.go" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/huiwan28/run.go" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/huiwan28/template.go" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/huiwan28/q_charts.go" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/client/client.go" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/client/config.go" beforeDir="false" afterPath="$PROJECT_DIR$/huiwan28/config.go" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/client/dQueryUsers.go" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/client/gBetting.go" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/client/gGold.go" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/client/qIssue.go" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/client/qRiddle.go" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/client/r1.go" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/client/r2.go" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/client/r3.go" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/client/r4.go" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/client/run.go" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/hdo/do.go" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/hdo/hdo_test.go" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/hdo/int64.go" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/config/config.go" beforeDir="false" afterPath="$PROJECT_DIR$/config/templates.go" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/config/config_test.go" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/config/huiwan28_bets.tpl" beforeDir="false" afterPath="$PROJECT_DIR$/config/huiwan28_record.tpl" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/huiwan28/config.go" beforeDir="false" afterPath="$PROJECT_DIR$/huiwan28/config.go" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/huiwan28/func.go" beforeDir="false" afterPath="$PROJECT_DIR$/huiwan28/func.go" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/huiwan28/huiwan28.go" beforeDir="false" afterPath="$PROJECT_DIR$/huiwan28/huiwan28.go" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/main.go" beforeDir="false" afterPath="$PROJECT_DIR$/main.go" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/proto/build.sh" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/proto/tty28.pb.go" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/proto/tty28.proto" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/proto/tty28_grpc.pb.go" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/server/gBetting.go" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/server/gGold.go" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/server/server.go" beforeDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -107,7 +83,7 @@
       <recent name="$PROJECT_DIR$/huiwan28" />
     </key>
   </component>
-  <component name="RunManager" selected="Go Test.config_test.go">
+  <component name="RunManager" selected="Go Build.go build main.go">
     <configuration default="true" type="GoApplicationRunConfiguration" factoryName="Go Application">
       <module name="tty28" />
       <working_directory value="$PROJECT_DIR$" />
@@ -161,8 +137,8 @@
     </configuration>
     <recent_temporary>
       <list>
-        <item itemvalue="Go Test.config_test.go" />
         <item itemvalue="Go Build.go build main.go" />
+        <item itemvalue="Go Test.config_test.go" />
         <item itemvalue="Go Test.hdo_test.go" />
       </list>
     </recent_temporary>

@@ -7,19 +7,8 @@ import (
 )
 
 type Config struct {
-	Authority       string `json:"authority"`
-	Origin          string `json:"origin"`
-	Referer         string `json:"referer"`
-	SecChUa         string `json:"sec_ch_ua"`
-	SecChUaPlatform string `json:"sec_ch_ua_platform"`
-	UserAgent       string `json:"user_agent"`
-	UToken          string `json:"u_token"`
-	Style           string `json:"style"`
-
-	IssueURL   string `json:"issue_url"`
-	RiddleURL  string `json:"riddle_url"`
-	GoldURL    string `json:"gold_url"`
-	BettingURL string `json:"betting_url"`
+	Cookie string `json:"cookie"`
+	Base   int64  `json:"base"`
 }
 
 var conf Config
