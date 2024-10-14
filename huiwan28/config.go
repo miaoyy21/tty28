@@ -1,4 +1,4 @@
-package client
+package huiwan28
 
 import (
 	"encoding/json"
@@ -7,8 +7,6 @@ import (
 )
 
 type Config struct {
-	Dsn string `json:"dsn"`
-
 	Authority       string `json:"authority"`
 	Origin          string `json:"origin"`
 	Referer         string `json:"referer"`
@@ -32,7 +30,7 @@ func InitConfig() error {
 		return err
 	}
 
-	bs, err := os.ReadFile(filepath.Join(dir, "config.json"))
+	bs, err := os.ReadFile(filepath.Join(dir, "config/huiwan28.json"))
 	if err != nil {
 		return err
 	}
