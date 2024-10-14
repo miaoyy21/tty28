@@ -86,7 +86,7 @@ func LoadTemplates() error {
 		encode := json.NewEncoder(buf)
 		encode.SetIndent("", "\t")
 		encode.Encode(reqTemp)
-		log.Printf("加载模版	%s\n%s", tempName, buf.String())
+		log.Printf("加载模版：%s\n%s", tempName, buf.String())
 
 		return nil
 	}); err != nil {
