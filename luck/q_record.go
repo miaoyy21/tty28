@@ -7,12 +7,6 @@ import (
 	"tty28/base"
 )
 
-type RecordRequest struct {
-	Number  string `json:"number"`
-	Periods string `json:"periods"`
-	Money   string `json:"money"`
-}
-
 func qRecord(issue string, sBets []string) error {
 	sNums := make([]string, 0, 28)
 	for _, num := range base.SN28 {

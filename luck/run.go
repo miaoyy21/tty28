@@ -7,8 +7,6 @@ import (
 	"tty28/base"
 )
 
-var parsed = 3
-
 func run() {
 	defer func() {
 		if err := recover(); err != nil {

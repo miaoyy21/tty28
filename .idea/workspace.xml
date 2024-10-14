@@ -5,21 +5,9 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="2a58a44b-93bd-4375-831b-926687b613db" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/conf/canada_record.tpl" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/config/huiwan28_charts.tpl" beforeDir="false" afterPath="$PROJECT_DIR$/conf/luck_charts.tpl" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/config/huiwan28_record.tpl" beforeDir="false" afterPath="$PROJECT_DIR$/conf/luck_record.tpl" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/config/templates.go" beforeDir="false" afterPath="$PROJECT_DIR$/conf/templates.go" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/luck/config.go" beforeDir="false" afterPath="$PROJECT_DIR$/base/config.go" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/luck/constant.go" beforeDir="false" afterPath="$PROJECT_DIR$/base/constant.go" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/luck/func.go" beforeDir="false" afterPath="$PROJECT_DIR$/base/func.go" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/luck/huiwan28.go" beforeDir="false" afterPath="$PROJECT_DIR$/luck/luck.go" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/luck/q_charts.go" beforeDir="false" afterPath="$PROJECT_DIR$/luck/q_charts.go" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/luck/q_record.go" beforeDir="false" afterPath="$PROJECT_DIR$/luck/q_record.go" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/luck/run.go" beforeDir="false" afterPath="$PROJECT_DIR$/luck/run.go" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/luck/template.go" beforeDir="false" afterPath="$PROJECT_DIR$/conf/canada_charts.tpl" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/main.go" beforeDir="false" afterPath="$PROJECT_DIR$/main.go" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
