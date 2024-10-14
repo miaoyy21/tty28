@@ -21,7 +21,6 @@ func run() {
 
 	// 是否在执行时间段
 	steps := float64(seconds%210) / 60
-	log.Println(steps)
 	if steps < 1 || steps > 2 {
 		return
 	}
@@ -36,7 +35,7 @@ func run() {
 	log.Printf("重载配置文件成功 ...\n")
 
 	// 第1步：查询开奖历史
-	base.SleepTo(45 + 5*rand.Float64())
+	time.Sleep(time.Duration(15*rand.Float64()) * time.Second)
 	user, err := qCharts()
 	if err != nil {
 		log.Printf("【ERR-0】: %s \n", err.Error())
@@ -77,7 +76,7 @@ func run() {
 	log.Printf("【2】投注期数【%s】，投注基数【%d】，投注总额【%d】...\n", nextIssue, int(base.Config.Base), total)
 
 	// 第3步：执行投注
-	base.SleepTo(51.5 + 6.5*rand.Float64())
+	time.Sleep(time.Duration(15*rand.Float64()) * time.Second)
 	log.Printf("【3】执行投注 ...")
 	if err := qRecord(nextIssue, sBets); err != nil {
 		log.Printf("【ERR-3】: %s \n", err.Error())
