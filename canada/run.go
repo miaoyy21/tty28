@@ -53,7 +53,7 @@ func run() {
 	// 第2步：挑选热门数字
 	summery, sNums := uint32(0), make(map[int32]struct{})
 	for _, space := range user.Spaces {
-		if summery > 500 {
+		if summery > 800 {
 			continue
 		}
 
